@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b94dbbc93b444e98e51b709623cc38b" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.ACCOUNT" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.AIRPORT" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.ANNUAL_REVENUE_REPORT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_ANNUAL_REVENUE_REPORT" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_MONTHLY_REVENUE_REPORT" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_DETAIL" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET_CLASS_DETAIL" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.Parameter" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.PERMISSION" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.PLANE" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.SEAT" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.TICKET_CLASS" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__ACCOUNT__RoleID__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT__ArrivalA__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT__Departur__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_DE__Preve__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__DETAILED___Fligh__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT__PlaneID__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_DE__Fligh__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__SEAT__PlaneID__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__SEAT__TicketClas__59063A47" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

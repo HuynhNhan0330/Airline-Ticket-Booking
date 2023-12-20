@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B09636B8-884A-4409-AE4F-9C2A22B1E9CD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Airline_Ticket_Booking</RootNamespace>
+    <AssemblyName>Airline-Ticket-Booking</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniExcel, Version=1.31.2.0, Culture=neutral, PublicKeyToken=e7310002a53eac39, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniExcel.1.31.2\lib\net45\MiniExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AControls\AButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AControls\ACircularPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AControls\ADateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AControls\ADateTimePicker.Designer.cs">
+      <DependentUpon>ADateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AControls\AMessageBoxFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AControls\AMessageBoxFrm.designer.cs">
+      <DependentUpon>AMessageBoxFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AControls\APanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AControls\ATextboxUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AControls\ATextboxUC.Designer.cs">
+      <DependentUpon>ATextboxUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DALs\AccountDAL.cs" />
+    <Compile Include="DALs\AirportDAL.cs" />
+    <Compile Include="DALs\AnnualRevenueReportDAL.cs" />
+    <Compile Include="DALs\DetailedAnnualRevenueReportDAL.cs" />
+    <Compile Include="DALs\DetailedMonthlyRevenueReportDAL.cs" />
+    <Compile Include="DALs\FlightDAL.cs" />
+    <Compile Include="DALs\FlightTicketClassDetailDAL.cs" />
+    <Compile Include="DALs\ParametersDAL.cs" />
+    <Compile Include="DALs\PermissionDAL.cs" />
+    <Compile Include="DALs\PlaneDAL.cs" />
+    <Compile Include="DALs\PreventiveAirportDAL.cs" />
+    <Compile Include="DALs\SeatDAL.cs" />
+    <Compile Include="DALs\TicketClassDAL.cs" />
+    <Compile Include="DALs\TicketDAL.cs" />
+    <Compile Include="DTOs\AccountDTO.cs" />
+    <Compile Include="DTOs\AirportDTO.cs" />
+    <Compile Include="DTOs\AnnualRevenueReportDTO.cs" />
+    <Compile Include="DTOs\DetailedAnnualRevenueReportDTO.cs" />
+    <Compile Include="DTOs\DetailedMonthlyRevenueReportDTO.cs" />
+    <Compile Include="DTOs\FlightDTO.cs" />
+    <Compile Include="DTOs\FlightTicketClassDetailDTO.cs" />
+    <Compile Include="DTOs\ParametersDTO.cs" />
+    <Compile Include="DTOs\PermissionDTO.cs" />
+    <Compile Include="DTOs\PlaneDTO.cs" />
+    <Compile Include="DTOs\PlaneTicketClassDetailDTO.cs" />
+    <Compile Include="DTOs\PreventiveAirportDTO.cs" />
+    <Compile Include="DTOs\SeatDTO.cs" />
+    <Compile Include="DTOs\TicketClassDTO.cs" />
+    <Compile Include="DTOs\TicketDTO.cs" />
+    <Compile Include="Model\ACCOUNT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineTicketBooking.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineTicketBooking.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineTicketBooking.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirlineTicketBooking.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirlineTicketBooking.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AIRPORT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ANNUAL_REVENUE_REPORT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DETAILED_ANNUAL_REVENUE_REPORT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DETAILED_MONTHLY_REVENUE_REPORT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FLIGHT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FLIGHT_DETAIL.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FLIGHT_TICKET.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FLIGHT_TICKET_CLASS_DETAIL.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parameter.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERMISSION.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PLANE.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SEAT.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TICKET_CLASS.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FlightService.cs" />
+    <Compile Include="Test\FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\AccountItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\AccountItemUC.Designer.cs">
+      <DependentUpon>AccountItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\AirportItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\AirportItemUC.Designer.cs">
+      <DependentUpon>AirportItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\DetailTicketClassUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\DetailTicketClassUC.Designer.cs">
+      <DependentUpon>DetailTicketClassUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\FlightItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\FlightItemUC.Designer.cs">
+      <DependentUpon>FlightItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PermissiontItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PermissiontItemUC.Designer.cs">
+      <DependentUpon>PermissiontItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneItemUC.Designer.cs">
+      <DependentUpon>PlaneItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneSeatItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneSeatItemUC.Designer.cs">
+      <DependentUpon>PlaneSeatItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneTicketClassItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PlaneTicketClassItemUC.Designer.cs">
+      <DependentUpon>PlaneTicketClassItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\PreventiveAirportItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\PreventiveAirportItemUC.Designer.cs">
+      <DependentUpon>PreventiveAirportItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\ReportByMonthItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\ReportByMonthItemUC.Designer.cs">
+      <DependentUpon>ReportByMonthItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\ReportByYearItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\ReportByYearItemUC.Designer.cs">
+      <DependentUpon>ReportByYearItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\TicketClassItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\TicketClassItemUC.Designer.cs">
+      <DependentUpon>TicketClassItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\TicketItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\TicketItemUC.Designer.cs">
+      <DependentUpon>TicketItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\BaseColor.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\RoundedRectangle.cs" />
+    <Compile Include="View\Admin\AccountAndPermission\AccountAndPermissionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\AccountAndPermission\AccountAndPermissionUC.Designer.cs">
+      <DependentUpon>AccountAndPermissionUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Flight\FlightListUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Flight\FlightListUC.Designer.cs">
+      <DependentUpon>FlightListUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Flight\FlightUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Flight\FlightUC.Designer.cs">
+      <DependentUpon>FlightUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Flight\OperationFlightUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Flight\OperationFlightUC.Designer.cs">
+      <DependentUpon>OperationFlightUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\FormAdminHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Admin\FormAdminHome.Designer.cs">
+      <DependentUpon>FormAdminHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\HomeAdminUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\HomeAdminUC.Designer.cs">
+      <DependentUpon>HomeAdminUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Plane\OperationPlaneUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Plane\OperationPlaneUC.Designer.cs">
+      <DependentUpon>OperationPlaneUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Plane\PlaneListUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Plane\PlaneListUC.Designer.cs">
+      <DependentUpon>PlaneListUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Plane\PlaneUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Plane\PlaneUC.Designer.cs">
+      <DependentUpon>PlaneUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportByMonthUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportByMonthUC.Designer.cs">
+      <DependentUpon>ReportByMonthUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportByYearUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportByYearUC.Designer.cs">
+      <DependentUpon>ReportByYearUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportUC.Designer.cs">
+      <DependentUpon>ReportUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Setting\SettingUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Setting\SettingUC.Designer.cs">
+      <DependentUpon>SettingUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\CreateFlightTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\CreateFlightTicketUC.Designer.cs">
+      <DependentUpon>CreateFlightTicketUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\FlightTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\FlightTicketUC.Designer.cs">
+      <DependentUpon>FlightTicketUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\SearchFlightTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\TicketPlane\SearchFlightTicketUC.Designer.cs">
+      <DependentUpon>SearchFlightTicketUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword1.Designer.cs">
+      <DependentUpon>ForgotPassword1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword2.Designer.cs">
+      <DependentUpon>ForgotPassword2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassword3.Designer.cs">
+      <DependentUpon>ForgotPassword3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\LoginUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Login\LoginUC.Designer.cs">
+      <DependentUpon>LoginUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\RegisterUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Login\RegisterUC.Designer.cs">
+      <DependentUpon>RegisterUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AControls\AMessageBoxFrm.resx">
+      <DependentUpon>AMessageBoxFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AControls\ATextboxUC.resx">
+      <DependentUpon>ATextboxUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Test\FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\AccountItemUC.resx">
+      <DependentUpon>AccountItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\AirportItemUC.resx">
+      <DependentUpon>AirportItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\DetailTicketClassUC.resx">
+      <DependentUpon>DetailTicketClassUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\FlightItemUC.resx">
+      <DependentUpon>FlightItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PermissiontItemUC.resx">
+      <DependentUpon>PermissiontItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PlaneItemUC.resx">
+      <DependentUpon>PlaneItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PlaneSeatItemUC.resx">
+      <DependentUpon>PlaneSeatItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PlaneTicketClassItemUC.resx">
+      <DependentUpon>PlaneTicketClassItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\PreventiveAirportItemUC.resx">
+      <DependentUpon>PreventiveAirportItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\ReportByMonthItemUC.resx">
+      <DependentUpon>ReportByMonthItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\ReportByYearItemUC.resx">
+      <DependentUpon>ReportByYearItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\TicketClassItemUC.resx">
+      <DependentUpon>TicketClassItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\TicketItemUC.resx">
+      <DependentUpon>TicketItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\AccountAndPermission\AccountAndPermissionUC.resx">
+      <DependentUpon>AccountAndPermissionUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Flight\FlightListUC.resx">
+      <DependentUpon>FlightListUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Flight\FlightUC.resx">
+      <DependentUpon>FlightUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Flight\OperationFlightUC.resx">
+      <DependentUpon>OperationFlightUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\FormAdminHome.resx">
+      <DependentUpon>FormAdminHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\HomeAdminUC.resx">
+      <DependentUpon>HomeAdminUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Plane\OperationPlaneUC.resx">
+      <DependentUpon>OperationPlaneUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Plane\PlaneListUC.resx">
+      <DependentUpon>PlaneListUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Plane\PlaneUC.resx">
+      <DependentUpon>PlaneUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Report\ReportByMonthUC.resx">
+      <DependentUpon>ReportByMonthUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Report\ReportByYearUC.resx">
+      <DependentUpon>ReportByYearUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Report\ReportUC.resx">
+      <DependentUpon>ReportUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Setting\SettingUC.resx">
+      <DependentUpon>SettingUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\TicketPlane\CreateFlightTicketUC.resx">
+      <DependentUpon>CreateFlightTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\TicketPlane\FlightTicketUC.resx">
+      <DependentUpon>FlightTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\TicketPlane\SearchFlightTicketUC.resx">
+      <DependentUpon>SearchFlightTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\ForgotPassword1.resx">
+      <DependentUpon>ForgotPassword1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\ForgotPassword2.resx">
+      <DependentUpon>ForgotPassword2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\ForgotPassword3.resx">
+      <DependentUpon>ForgotPassword3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\LoginUC.resx">
+      <DependentUpon>LoginUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\RegisterUC.resx">
+      <DependentUpon>RegisterUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Excel\TemplateReportByMonth.xlsx" />
+    <None Include="Excel\TemplateReportByYear.xlsx" />
+    <EntityDeploy Include="Model\AirlineTicketBooking.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AirlineTicketBooking.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\AirlineTicketBooking.edmx.diagram">
+      <DependentUpon>AirlineTicketBooking.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\AirlineTicketBooking.sql" />
+    <Content Include="Database\Sample data.sql" />
+    <Content Include="Model\AirlineTicketBooking.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlineTicketBooking.edmx</DependentUpon>
+      <LastGenOutput>AirlineTicketBooking.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\AirlineTicketBooking.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirlineTicketBooking.edmx</DependentUpon>
+      <LastGenOutput>AirlineTicketBooking.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\calendarDark.png" />
+    <Content Include="Resources\calendarWhite.png" />
+    <Content Include="Resources\cancel-ticket.png" />
+    <Content Include="Resources\ChatIcon.png" />
+    <Content Include="Resources\closeIcon.png" />
+    <Content Include="Resources\CloseIcon2.png" />
+    <Content Include="Resources\DeleteIcon.png" />
+    <Content Include="Resources\EditIcon.png" />
+    <Content Include="Resources\ErrorIcon.png" />
+    <Content Include="Resources\ExclamationIcon.png" />
+    <Content Include="Resources\flight.jpg" />
+    <Content Include="Resources\hide.png" />
+    <Content Include="Resources\HomeAdminImg-removebg-preview.png" />
+    <Content Include="Resources\InformationIcon.png" />
+    <Content Include="Resources\LogoMAT.png" />
+    <Content Include="Resources\MoneyIcon.png" />
+    <Content Include="Resources\PlaneFlightIcon.png" />
+    <Content Include="Resources\QuestionIcon.png" />
+    <Content Include="Resources\return.png" />
+    <Content Include="Resources\TicketIcon.png" />
+    <Content Include="Resources\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
