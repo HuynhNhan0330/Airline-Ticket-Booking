@@ -302,8 +302,9 @@ namespace Airline_Ticket_Booking
             this.adtpTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(94)))));
             this.adtpTime.BorderSize = 2;
             this.adtpTime.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adtpTime.CustomFormat = "dd/MM/yyyy";
             this.adtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.adtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.adtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.adtpTime.Location = new System.Drawing.Point(50, 25);
             this.adtpTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.adtpTime.MinimumSize = new System.Drawing.Size(4, 30);
@@ -315,23 +316,23 @@ namespace Airline_Ticket_Booking
             // 
             // cbDepatureAirport
             // 
+            this.cbDepatureAirport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDepatureAirport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.cbDepatureAirport.FormattingEnabled = true;
             this.cbDepatureAirport.Location = new System.Drawing.Point(300, 25);
             this.cbDepatureAirport.Name = "cbDepatureAirport";
             this.cbDepatureAirport.Size = new System.Drawing.Size(200, 30);
             this.cbDepatureAirport.TabIndex = 7;
-            this.cbDepatureAirport.Text = "Nơi cất cánh";
             // 
             // cbArrivalAirport
             // 
+            this.cbArrivalAirport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbArrivalAirport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.cbArrivalAirport.FormattingEnabled = true;
             this.cbArrivalAirport.Location = new System.Drawing.Point(550, 25);
             this.cbArrivalAirport.Name = "cbArrivalAirport";
             this.cbArrivalAirport.Size = new System.Drawing.Size(200, 30);
             this.cbArrivalAirport.TabIndex = 8;
-            this.cbArrivalAirport.Text = "Nơi hạ cánh";
             // 
             // FlightListUC
             // 

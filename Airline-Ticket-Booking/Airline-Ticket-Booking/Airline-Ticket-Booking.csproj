@@ -81,8 +81,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlightCustomerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FlightCustomerUC.Designer.cs">
+      <DependentUpon>FlightCustomerUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\MESSAGE.cs">
       <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\FlightMobileItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\FlightMobileItemUC.Designer.cs">
+      <DependentUpon>FlightMobileItemUC.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Customer\AccountUC.cs">
       <SubType>UserControl</SubType>
@@ -431,6 +443,12 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FlightCustomerUC.resx">
+      <DependentUpon>FlightCustomerUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\FlightMobileItemUC.resx">
+      <DependentUpon>FlightMobileItemUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\AccountUC.resx">
       <DependentUpon>AccountUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +617,8 @@
     </Content>
     <None Include="Resources\accountDeactive.png" />
     <None Include="Resources\accountActive.png" />
+    <None Include="Resources\airplane.png" />
+    <None Include="Resources\calendar.png" />
     <Content Include="Resources\calendarDark.png" />
     <Content Include="Resources\calendarWhite.png" />
     <Content Include="Resources\cancel-ticket.png" />
@@ -616,6 +636,8 @@
     <None Include="Resources\flightActive1.png" />
     <None Include="Resources\flightDeactive.png" />
     <None Include="Resources\flightActive2.png" />
+    <None Include="Resources\FlightUp.png" />
+    <None Include="Resources\FlightDown.png" />
     <Content Include="Resources\hide.png" />
     <Content Include="Resources\HomeAdminImg-removebg-preview.png" />
     <Content Include="Resources\InformationIcon.png" />

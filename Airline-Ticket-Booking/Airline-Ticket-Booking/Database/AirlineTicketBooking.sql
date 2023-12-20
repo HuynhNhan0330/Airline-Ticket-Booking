@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE AirlineTicketBooking
 
 USE AirlineTicketBooking
-DROP DATABASE AirlineTicketBooking
+
 CREATE TABLE FLIGHT (
     FlightID VARCHAR(20) PRIMARY KEY NOT NULL,
     PlaneID VARCHAR(20) NOT NULL,

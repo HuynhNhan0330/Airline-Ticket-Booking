@@ -34,7 +34,7 @@ namespace Airline_Ticket_Booking
         private void FormMainCustomerWindown_Load(object sender, EventArgs e)
         {
             currentButton = abtnFlight;
-            //loadBody(new HomeUC());
+            loadBody(new FlightCustomerUC());
         }
         #endregion
 
@@ -123,12 +123,6 @@ namespace Airline_Ticket_Booking
             }
         }
 
-        private void abtnHome_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        #endregion
 
         private void abtnFlight_Click(object sender, EventArgs e)
         {
@@ -140,7 +134,7 @@ namespace Airline_Ticket_Booking
                 doActiveButton(abtnChoose);
                 currentButton = abtnChoose;
 
-                //loadBody(new HomeUC());
+                loadBody(new FlightCustomerUC());
             }
         }
 
@@ -185,5 +179,6 @@ namespace Airline_Ticket_Booking
                 loadBody(new AccountUC());
             }
         }
+        #endregion
     }
 }
