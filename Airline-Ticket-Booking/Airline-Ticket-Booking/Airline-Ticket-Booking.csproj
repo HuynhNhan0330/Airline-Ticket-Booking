@@ -81,6 +81,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\MESSAGE.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\AccountUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\AccountUC.Designer.cs">
+      <DependentUpon>AccountUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="AControls\AButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -422,6 +431,9 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Customer\AccountUC.resx">
+      <DependentUpon>AccountUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AControls\AMessageBoxFrm.resx">
       <DependentUpon>AMessageBoxFrm.cs</DependentUpon>
     </EmbeddedResource>

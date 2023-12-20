@@ -18,5 +18,6 @@ namespace Airline_Ticket_Booking.DTOs
         public string RoleID { get; set; }
         public string PermissionCode { get; set; }
         public string RoleName { get; set; }
+        public decimal Cash { get; set; }
     }
 }

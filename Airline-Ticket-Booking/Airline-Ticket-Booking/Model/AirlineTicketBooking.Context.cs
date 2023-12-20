@@ -34,6 +34,7 @@ namespace Airline_Ticket_Booking.Model
         public virtual DbSet<FLIGHT_DETAIL> FLIGHT_DETAIL { get; set; }
         public virtual DbSet<FLIGHT_TICKET> FLIGHT_TICKET { get; set; }
         public virtual DbSet<FLIGHT_TICKET_CLASS_DETAIL> FLIGHT_TICKET_CLASS_DETAIL { get; set; }
+        public virtual DbSet<MESSAGE> MESSAGEs { get; set; }
         public virtual DbSet<Parameter> Parameters { get; set; }
         public virtual DbSet<PERMISSION> PERMISSIONs { get; set; }
         public virtual DbSet<PLANE> PLANEs { get; set; }

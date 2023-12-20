@@ -44,7 +44,8 @@ namespace Airline_Ticket_Booking.DALs
                                               Password = ac.Password,
                                               Created = DateTime.Now,
                                               RoleID = ac.RoleID,
-                                              RoleName = role.RoleName
+                                              RoleName = role.RoleName,
+                                              Cash = (decimal)ac.Cash
                                           }).FirstOrDefault();
 
                     if (account == null)
@@ -78,6 +79,7 @@ namespace Airline_Ticket_Booking.DALs
                                               Password = ac.Password,
                                               Created = DateTime.Now,
                                               RoleID = ac.RoleID,
+                                              Cash = (decimal)ac.Cash
                                           }).FirstOrDefault();
 
                     return account;
@@ -95,12 +97,12 @@ namespace Airline_Ticket_Booking.DALs
             {
                 using (var context = new AirlineTicketBookingEntities())
                 {
-                    var checkAccountByEmail = context.ACCOUNTs.FirstOrDefault(ac => ac.Email == account.Email);
+                    var checkAccountByEmail = context.ACCOUNTs.FirstOrDefault(ac => ac.Email == account.Email && ac.AccountID != account.AccountID);
 
                     if (checkAccountByEmail != null)
                         return (false, "Email đã tồn tại", null);
 
-                    var checkAccountByPhone = context.ACCOUNTs.FirstOrDefault(ac => ac.Phone == account.Phone);
+                    var checkAccountByPhone = context.ACCOUNTs.FirstOrDefault(ac => ac.Phone == account.Phone && ac.AccountID != account.AccountID);
 
                     if (checkAccountByPhone != null)
                         return (false, "Số điện thoại đã tồn tại", null);
@@ -117,6 +119,7 @@ namespace Airline_Ticket_Booking.DALs
                         Password = account.Password,
                         Created = account.Created,
                         RoleID = account.RoleID,
+                        Cash = 10000000
                     };
 
                     context.ACCOUNTs.Add(newAccount);
@@ -151,7 +154,8 @@ namespace Airline_Ticket_Booking.DALs
                                             Created = (DateTime)ac.Created,
                                             RoleID = ac.RoleID,
                                             RoleName = permission.RoleName,
-                                            PermissionCode = permission.PermissionCode
+                                            PermissionCode = permission.PermissionCode,
+                                            Cash = (decimal)ac.Cash
                                       }).ToListAsync();
 
                     return (true, await accountList, "Lấy danh sách tài khoản thành công!");
@@ -189,12 +193,12 @@ namespace Airline_Ticket_Booking.DALs
             {
                 using (var context = new AirlineTicketBookingEntities())
                 {
-                    var checkAccountByEmail = context.ACCOUNTs.FirstOrDefault(ac => ac.Email == account.Email);
+                    var checkAccountByEmail = context.ACCOUNTs.FirstOrDefault(ac => ac.Email == account.Email && ac.AccountID != account.AccountID);
 
                     if (checkAccountByEmail != null)
                         return (false, "Email đã tồn tại");
 
-                    var checkAccountByPhone = context.ACCOUNTs.FirstOrDefault(ac => ac.Phone == account.Phone);
+                    var checkAccountByPhone = context.ACCOUNTs.FirstOrDefault(ac => ac.Phone == account.Phone && ac.AccountID != account.AccountID);
 
                     if (checkAccountByPhone != null)
                         return (false, "Số điện thoại đã tồn tại");
@@ -205,6 +209,7 @@ namespace Airline_Ticket_Booking.DALs
                     currentAccount.Email = account.Email;
                     currentAccount.Phone = account.Phone;
                     currentAccount.RoleID = account.RoleID;
+                    currentAccount.Cash = account.Cash;
 
                     context.SaveChanges();
 

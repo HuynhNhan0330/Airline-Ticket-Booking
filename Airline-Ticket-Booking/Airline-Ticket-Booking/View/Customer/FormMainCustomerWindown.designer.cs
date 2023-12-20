@@ -59,7 +59,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(210)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.ForeColor = System.Drawing.Color.Blue;
             this.panel2.Location = new System.Drawing.Point(0, 90);
@@ -69,7 +69,7 @@
             // 
             // pnTop
             // 
-            this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.pnTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(210)))));
             this.pnTop.Controls.Add(this.pibClose);
             this.pnTop.Controls.Add(this.lbNameBank);
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -111,8 +111,8 @@
             // 
             // abtnFlight
             // 
-            this.abtnFlight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.abtnFlight.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.abtnFlight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(210)))));
+            this.abtnFlight.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(210)))));
             this.abtnFlight.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(93)))), ((int)(((byte)(56)))));
             this.abtnFlight.BorderRadius = 30;
             this.abtnFlight.BorderSize = 0;

@@ -14,6 +14,12 @@ namespace Airline_Ticket_Booking.Model
     
     public partial class ACCOUNT
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ACCOUNT()
+        {
+            this.MESSAGEs = new HashSet<MESSAGE>();
+        }
+    
         public string AccountID { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -21,7 +27,10 @@ namespace Airline_Ticket_Booking.Model
         public string Password { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
         public string RoleID { get; set; }
+        public Nullable<decimal> Cash { get; set; }
     
         public virtual PERMISSION PERMISSION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MESSAGE> MESSAGEs { get; set; }
     }
 }

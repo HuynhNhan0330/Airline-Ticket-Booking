@@ -18,7 +18,7 @@ namespace Airline_Ticket_Booking
     public partial class FormMainCustomerWindown : Form
     {
         private AButton currentButton = null;
-        private AccountDTO _customer;
+        private AccountDTO _customer = new AccountDTO();
         public AccountDTO customer
         {
             get { return _customer; }
@@ -75,7 +75,7 @@ namespace Airline_Ticket_Booking
 
         private void doActiveButton(AButton abtn)
         {
-            abtn.BackColor = BaseColor.XanhNhat;
+            abtn.BackColor = BaseColor.XanhDam1;
             abtn.ForeColor = Color.White;
 
             switch (abtn.Name)
@@ -182,7 +182,7 @@ namespace Airline_Ticket_Booking
                 doActiveButton(abtnChoose);
                 currentButton = abtnChoose;
 
-                //loadBody(new HomeUC());
+                loadBody(new AccountUC());
             }
         }
     }

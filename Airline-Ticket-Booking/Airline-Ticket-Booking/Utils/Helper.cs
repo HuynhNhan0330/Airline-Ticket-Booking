@@ -86,5 +86,11 @@ namespace Airline_Ticket_Booking.Utils
             FormAdminHome form = Application.OpenForms.OfType<FormAdminHome>().FirstOrDefault();
             return form.account;
         }
+
+        public static AccountDTO getAccountCustomer()
+        {
+            FormMainCustomerWindown form = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
+            return form.customer;
+        }
     }
 }

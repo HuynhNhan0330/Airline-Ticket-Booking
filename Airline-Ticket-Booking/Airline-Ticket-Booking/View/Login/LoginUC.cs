@@ -72,8 +72,17 @@ namespace Airline_Ticket_Booking
                 var currentForm = FindForm();
                 currentForm.Hide();
 
-                FormAdminHome frmHome = new FormAdminHome(account);
-                frmHome.ShowDialog();
+                if (account.RoleName == "Khách hàng")
+                {
+                    FormMainCustomerWindown frmHome = new FormMainCustomerWindown();
+                    frmHome.customer = account;
+                    frmHome.ShowDialog();
+                }
+                else
+                {
+                    FormAdminHome frmHome = new FormAdminHome(account);
+                    frmHome.ShowDialog();
+                }
 
                 currentForm.Show();
             }

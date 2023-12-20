@@ -141,6 +141,7 @@
             this.abtnPlane.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
             this.abtnPlane.ThinknessLine = 5;
             this.abtnPlane.UseVisualStyleBackColor = false;
+            this.abtnPlane.Visible = false;
             this.abtnPlane.Click += new System.EventHandler(this.abtnPlane_Click);
             // 
             // abtnReport

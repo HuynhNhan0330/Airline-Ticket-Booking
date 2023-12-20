@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE AirlineTicketBooking
 
 USE AirlineTicketBooking
-
+DROP DATABASE AirlineTicketBooking
 CREATE TABLE FLIGHT (
     FlightID VARCHAR(20) PRIMARY KEY NOT NULL,
     PlaneID VARCHAR(20) NOT NULL,
@@ -111,7 +111,8 @@ CREATE TABLE ACCOUNT (
   Email NVARCHAR(100),
   Password NVARCHAR(100),
   Created SMALLDATETIME,
-  RoleID VARCHAR(20) NOT NULL
+  RoleID VARCHAR(20) NOT NULL,
+  Cash DECIMAL(10, 2)
 );
 
 CREATE TABLE PERMISSION (
@@ -119,6 +120,16 @@ CREATE TABLE PERMISSION (
   RoleName NVARCHAR(100),
   PermissionCode NVARCHAR(100)
 );
+
+CREATE TABLE MESSAGE (
+	MessageID VARCHAR(20) PRIMARY KEY NOT NULL,
+	TexterID VARCHAR(20),
+	RecipientID VARCHAR (20),
+	Text NVARCHAR(255),
+	Created SMALLDATETIME
+)
+
+alter table MESSAGE add foreign key (TexterID) references ACCOUNT(AccountID)
 
 alter table ACCOUNT add foreign key (RoleID) references PERMISSION(RoleID);
 
