@@ -380,6 +380,12 @@
     <Compile Include="View\Admin\TicketPlane\SearchFlightTicketUC.Designer.cs">
       <DependentUpon>SearchFlightTicketUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Customer\FormMainCustomerWindown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Customer\FormMainCustomerWindown.designer.cs">
+      <DependentUpon>FormMainCustomerWindown.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\ForgotPassword1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -430,6 +436,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Test\FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
@@ -521,6 +528,9 @@
     <EmbeddedResource Include="View\Admin\TicketPlane\SearchFlightTicketUC.resx">
       <DependentUpon>SearchFlightTicketUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\FormMainCustomerWindown.resx">
+      <DependentUpon>FormMainCustomerWindown.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login\ForgotPassword1.resx">
       <DependentUpon>ForgotPassword1.cs</DependentUpon>
     </EmbeddedResource>
@@ -575,25 +585,36 @@
       <DependentUpon>AirlineTicketBooking.edmx</DependentUpon>
       <LastGenOutput>AirlineTicketBooking.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\accountDeactive.png" />
+    <None Include="Resources\accountActive.png" />
     <Content Include="Resources\calendarDark.png" />
     <Content Include="Resources\calendarWhite.png" />
     <Content Include="Resources\cancel-ticket.png" />
     <Content Include="Resources\ChatIcon.png" />
     <Content Include="Resources\closeIcon.png" />
     <Content Include="Resources\CloseIcon2.png" />
+    <None Include="Resources\ContactActive.png" />
+    <None Include="Resources\contactDeactive.png" />
     <Content Include="Resources\DeleteIcon.png" />
     <Content Include="Resources\EditIcon.png" />
     <Content Include="Resources\ErrorIcon.png" />
     <Content Include="Resources\ExclamationIcon.png" />
     <Content Include="Resources\flight.jpg" />
+    <None Include="Resources\flightActive.png" />
+    <None Include="Resources\flightActive1.png" />
+    <None Include="Resources\flightDeactive.png" />
+    <None Include="Resources\flightActive2.png" />
     <Content Include="Resources\hide.png" />
     <Content Include="Resources\HomeAdminImg-removebg-preview.png" />
     <Content Include="Resources\InformationIcon.png" />
+    <None Include="Resources\log-out.png" />
     <Content Include="Resources\LogoMAT.png" />
     <Content Include="Resources\MoneyIcon.png" />
     <Content Include="Resources\PlaneFlightIcon.png" />
     <Content Include="Resources\QuestionIcon.png" />
     <Content Include="Resources\return.png" />
+    <None Include="Resources\ticketDeactive.png" />
+    <None Include="Resources\ticketActive.png" />
     <Content Include="Resources\TicketIcon.png" />
     <Content Include="Resources\view.png" />
   </ItemGroup>
@@ -612,6 +633,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

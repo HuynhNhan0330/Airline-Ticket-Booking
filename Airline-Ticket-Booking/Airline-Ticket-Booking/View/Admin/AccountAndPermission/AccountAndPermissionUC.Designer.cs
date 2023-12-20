@@ -154,11 +154,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(23, 15);
+            this.label8.Location = new System.Drawing.Point(55, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 20);
+            this.label8.Size = new System.Drawing.Size(64, 20);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Đang cập nhật...";
+            this.label8.Text = "Liên hệ";
             // 
             // panel10
             // 

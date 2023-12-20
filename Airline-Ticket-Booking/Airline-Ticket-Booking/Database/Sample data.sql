@@ -12,20 +12,24 @@ GO
 --Tạo giá trị cho "Quyền"
 INSERT INTO PERMISSION (RoleID, RoleName, PermissionCode)
 VALUES
-	('RL0001', N'Siêu quản trị', '111111'),
-	('RL0002', N'Quản trị', '000010'),
-	('RL0003', N'Ban giám đốc', '101001'),
-	('RL0004', N'Nhân viên', '111100')
+	('RL0001', N'Siêu quản trị', '1111111'),
+	('RL0002', N'Quản trị', '0000100'),
+	('RL0003', N'Ban giám đốc', '1010010'),
+	('RL0004', N'Nhân viên', '1111001'),
+	('RL0005', N'Khách hàng', '0100001')
 GO
 
 --Tạo giá trị cho "Tài Khoản"
 INSERT INTO ACCOUNT (AccountID, Name, Phone, Email, Password, Created, RoleID)
 VALUES
-  ('AC0001', N'Huỳnh Mai Cao Nhân', '123456789', 'tinhoctrevnnhan@gmail.com', '1', '1/1/2023', 'RL0001'),
+  ('AC0001', N'Huỳnh Mai Cao Nhân', '123456789', 'test0@gmail.com', '1', '1/1/2023', 'RL0001'),
   ('AC0002', N'Huỳnh Mai Cao Nhân', '987654321', 'test1@gmail.com', '1', '1/1/2023', 'RL0002'),
   ('AC0003', N'Huỳnh Mai Cao Nhân', '555555555', 'test2@gmail.com', '1', '1/1/2023', 'RL0003'),
-  ('AC0004', N'Huỳnh Mai Cao Nhân', '999999999', 'test3@gmail.com', '1', '1/1/2023', 'RL0004');
+  ('AC0004', N'Huỳnh Mai Cao Nhân', '999999999', 'test3@gmail.com', '1', '1/1/2023', 'RL0004'),
+  ('AC0005', N'Huỳnh Mai Cao Nhân', '0906123456', 'tinhoctrevnnhan@gmail.com', '1', '1/1/2023', 'RL0005')
 GO
+
+DELETE FROM PERMISSION
 
 --Tạo giá trị cho "Hạng Vé"
 INSERT INTO TICKET_CLASS (TicketClassID, TicketClassName, PricePercentage)
