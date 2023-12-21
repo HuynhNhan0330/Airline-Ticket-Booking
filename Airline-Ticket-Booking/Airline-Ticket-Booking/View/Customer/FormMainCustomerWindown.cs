@@ -162,7 +162,7 @@ namespace Airline_Ticket_Booking
                 doActiveButton(abtnChoose);
                 currentButton = abtnChoose;
 
-                //loadBody(new HomeUC());
+                loadBody(new ContactCustomerUC());
             }
         }
 

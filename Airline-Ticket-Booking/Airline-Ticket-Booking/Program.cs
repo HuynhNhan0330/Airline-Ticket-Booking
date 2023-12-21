@@ -16,7 +16,7 @@ namespace Airline_Ticket_Booking
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMainCustomerWindown());
+            Application.Run(new FormLogin());
         }
     }
 }

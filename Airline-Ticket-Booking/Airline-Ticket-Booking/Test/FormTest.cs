@@ -29,24 +29,7 @@ namespace Airline_Ticket_Booking
 
         private async void test()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Excel Files|*.xlsx;*.xlsm";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string PATH_TEMPLATE = @"../../Excel/TemplateReportByMonth.xlsx";
-                string PATH_EXPORT = saveFileDialog.FileName;
-
-                var value = new
-                {
-                    reportType = "Báo cáo năm",
-                    reportTime = DateTime.Now.ToString("dd/MM/yyyy"),
-                    nameUser = "Huỳnh Mai Cao Nhân"
-                };
-
-                MiniExcel.SaveAsByTemplate(PATH_EXPORT, PATH_TEMPLATE, value);
-
-                Process.Start(PATH_EXPORT);
-            }
+            
         }
     }
 }

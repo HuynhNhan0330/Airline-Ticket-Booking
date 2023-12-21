@@ -61,6 +61,9 @@ namespace Airline_Ticket_Booking
                         case 5:
                             abtnSetting.Visible = false;
                             break;
+                        case 6:
+                            abtnContact.Visible = false;
+                            break;
                     }
                 }
             }
@@ -189,6 +192,20 @@ namespace Airline_Ticket_Booking
                 loadBody(new AccountAndPermissionUC());
             }
         }
+
+        private void abtnContact_Click(object sender, EventArgs e)
+        {
+            if (currentButton != abtnContact)
+            {
+                if (currentButton != null)
+                    doDeactivateButton(currentButton);
+
+                currentButton = abtnContact;
+                doActivateButton(currentButton);
+                loadBody(new ContactUC());
+            }
+
+        }
         #endregion
 
 
@@ -201,5 +218,7 @@ namespace Airline_Ticket_Booking
             doActivateButton(currentButton);
             loadBody(new FlightTicketUC(flight));
         }
+
+        
     }
 }

@@ -373,6 +373,16 @@ namespace Airline_Ticket_Booking.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SendIcon {
+            get {
+                object obj = ResourceManager.GetObject("SendIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ticketActive {
             get {
                 object obj = ResourceManager.GetObject("ticketActive", resourceCulture);
@@ -396,6 +406,16 @@ namespace Airline_Ticket_Booking.Properties {
         internal static System.Drawing.Bitmap TicketIcon {
             get {
                 object obj = ResourceManager.GetObject("TicketIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user {
+            get {
+                object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

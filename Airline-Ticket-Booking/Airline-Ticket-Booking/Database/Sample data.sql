@@ -26,7 +26,8 @@ VALUES
   ('AC0002', N'Huỳnh Mai Cao Nhân', '987654321', 'test1@gmail.com', '1', '1/1/2023', 'RL0002', 10000000),
   ('AC0003', N'Huỳnh Mai Cao Nhân', '555555555', 'test2@gmail.com', '1', '1/1/2023', 'RL0003', 10000000),
   ('AC0004', N'Huỳnh Mai Cao Nhân', '999999999', 'test3@gmail.com', '1', '1/1/2023', 'RL0004', 10000000),
-  ('AC0005', N'Huỳnh Mai Cao Nhân', '0906123456', 'tinhoctrevnnhan@gmail.com', '1', '1/1/2023', 'RL0005', 10000000)
+  ('AC0005', N'Huỳnh Mai Cao Nhân', '0906123456', 'tinhoctrevnnhan@gmail.com', '1', '1/1/2023', 'RL0005', 10000000),
+  ('AC0006', N'Ngô Phương Nam', '0906123457', 'test4@gmail.com', '1', '1/1/2023', 'RL0005', 10000000)
 GO
 
 --Tạo giá trị cho "Hạng Vé"
@@ -248,3 +249,17 @@ BEGIN
 
     SET @i = @i + 1;
 END
+
+SELECT * FROM MESSAGE
+SELECT * FROM ACCOUNT
+
+DELETE FROM MESSAGE
+
+
+
+INSERT INTO MESSAGE(MessageID, TexterID, RecipientID, Text, Created)
+VALUES
+	('MS0001', 'AC0005', 'AC0001', N'Tôi cần giúp đỡ', '1/12/2023 1:10:00'),
+	('MS0002', 'AC0001', 'AC0005', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:12:00'),
+	('MS0003', 'AC0006', 'AC0001', N'CTôi cần giúp đỡ', '1/12/2023 1:15:00'),
+	('MS0004', 'AC0001', 'AC0006', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:30:00')

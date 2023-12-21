@@ -81,6 +81,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALs\MessageDAL.cs" />
+    <Compile Include="View\ChatUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChatUC.Designer.cs">
+      <DependentUpon>ChatUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\Contact\ContactCustomerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\Contact\ContactCustomerUC.Designer.cs">
+      <DependentUpon>ContactCustomerUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DALs\ContactDAL.cs" />
+    <Compile Include="DTOs\ContactDTO.cs" />
+    <Compile Include="DTOs\MessageDTO.cs" />
+    <Compile Include="Usercontrols\ContactItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\ContactItemUC.Designer.cs">
+      <DependentUpon>ContactItemUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\InMessageUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\InMessageUC.Designer.cs">
+      <DependentUpon>InMessageUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\OutMessageUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\OutMessageUC.Designer.cs">
+      <DependentUpon>OutMessageUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Contact\ContactUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Contact\ContactUC.Designer.cs">
+      <DependentUpon>ContactUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\Flight\FlightCustomerUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -443,6 +483,24 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ChatUC.resx">
+      <DependentUpon>ChatUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\Contact\ContactCustomerUC.resx">
+      <DependentUpon>ContactCustomerUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\ContactItemUC.resx">
+      <DependentUpon>ContactItemUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\InMessageUC.resx">
+      <DependentUpon>InMessageUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\OutMessageUC.resx">
+      <DependentUpon>OutMessageUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Contact\ContactUC.resx">
+      <DependentUpon>ContactUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\Flight\FlightCustomerUC.resx">
       <DependentUpon>FlightCustomerUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -649,7 +707,9 @@
     <Content Include="Resources\return.png" />
     <None Include="Resources\ticketDeactive.png" />
     <None Include="Resources\ticketActive.png" />
+    <None Include="Resources\SendIcon.png" />
     <Content Include="Resources\TicketIcon.png" />
+    <None Include="Resources\user.png" />
     <Content Include="Resources\view.png" />
   </ItemGroup>
   <ItemGroup>
