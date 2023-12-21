@@ -81,10 +81,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlightCustomerUC.cs">
+    <Compile Include="View\Customer\Flight\FlightCustomerUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FlightCustomerUC.Designer.cs">
+    <Compile Include="View\Customer\Flight\FlightCustomerUC.Designer.cs">
       <DependentUpon>FlightCustomerUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MESSAGE.cs">
@@ -96,10 +96,10 @@
     <Compile Include="Usercontrols\FlightMobileItemUC.Designer.cs">
       <DependentUpon>FlightMobileItemUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Customer\AccountUC.cs">
+    <Compile Include="View\Customer\Account\AccountUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Customer\AccountUC.Designer.cs">
+    <Compile Include="View\Customer\Account\AccountUC.Designer.cs">
       <DependentUpon>AccountUC.cs</DependentUpon>
     </Compile>
     <Compile Include="AControls\AButton.cs">
@@ -443,13 +443,13 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FlightCustomerUC.resx">
+    <EmbeddedResource Include="View\Customer\Flight\FlightCustomerUC.resx">
       <DependentUpon>FlightCustomerUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrols\FlightMobileItemUC.resx">
       <DependentUpon>FlightMobileItemUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Customer\AccountUC.resx">
+    <EmbeddedResource Include="View\Customer\Account\AccountUC.resx">
       <DependentUpon>AccountUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AControls\AMessageBoxFrm.resx">
