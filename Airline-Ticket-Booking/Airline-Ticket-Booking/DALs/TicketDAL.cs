@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -190,6 +191,49 @@ namespace Airline_Ticket_Booking.DALs
             catch (Exception ex)
             {
                 return (false, ex.Message);
+            }
+        }
+
+        public async Task<(bool, List<TicketDTO>, string)> getListTicketByAccount(string accountID)
+        {
+            try
+            {
+                using (var context = new AirlineTicketBookingEntities())
+                {
+                    var TicketList = (from ticket in context.FLIGHT_TICKET
+                                      join flight in context.FLIGHTs
+                                      on ticket.FlightID equals flight.FlightID
+                                      join ticketClass in context.TICKET_CLASS
+                                      on ticket.TicketClassID equals ticketClass.TicketClassID
+                                      where ticket.FlightStatus != "Đã huỷ" && ticket.AccountID == accountID
+                                      join departureAirport in context.AIRPORTs
+                                      on flight.DepartureAirportCode equals departureAirport.AirportID
+                                      join arrivalAirport in context.AIRPORTs
+                                      on flight.ArrivalAirportCode equals arrivalAirport.AirportID
+                                      select new TicketDTO
+                                      {
+                                          TicketID = ticket.FlightTicketID,
+                                          FlightID = flight.FlightID,
+                                          TicketClassID = ticket.TicketClassID,
+                                          Email = ticket.Email,
+                                          PhoneNumber = ticket.PhoneNumber,
+                                          FullName = ticket.FullName,
+                                          FlightStatus = ticket.FlightStatus,
+                                          IDCard = ticket.IDCard,
+                                          Price = ticket.Price,
+                                          SeatID = ticket.SeatID,
+                                          DepartureDateTime = flight.DepartureDateTime,
+                                          TicketClassName = ticketClass.TicketClassName,
+                                          DepartureCityName = departureAirport.CityName,
+                                          ArrivalCityName = arrivalAirport.CityName
+                                      }).ToListAsync();
+
+                    return (true, await TicketList, "Lấy danh sách vé thành công");
+                }
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
             }
         }
     }

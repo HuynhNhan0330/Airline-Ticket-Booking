@@ -122,7 +122,7 @@ namespace Airline_Ticket_Booking
         {
             if (currentButton != null) doDeactiveButton(currentButton);
             doActiveButton(abtnFlight);
-
+            currentButton = abtnFlight;
             loadBody(new FlightCustomerUC());
         }
 
@@ -136,7 +136,7 @@ namespace Airline_Ticket_Booking
                 doActiveButton(abtnChoose);
                 currentButton = abtnChoose;
 
-                //loadBody(new HomeUC());
+                loadBody(new TicketCustomerUC());
             }
         }
 

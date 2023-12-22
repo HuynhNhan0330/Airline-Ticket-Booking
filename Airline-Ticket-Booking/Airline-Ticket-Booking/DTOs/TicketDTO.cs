@@ -21,5 +21,7 @@ namespace Airline_Ticket_Booking.DTOs
         public string FlightStatus { get; set; }
         public DateTime DepartureDateTime { get; set; }
         public string accountID {  get; set; }
+        public string DepartureCityName { get; set; }
+        public string ArrivalCityName { get; set; }
     }
 }

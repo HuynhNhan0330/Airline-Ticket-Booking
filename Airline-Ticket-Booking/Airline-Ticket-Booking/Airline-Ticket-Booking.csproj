@@ -81,6 +81,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\Customer\Ticket\TicketCustomerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\Ticket\TicketCustomerUC.Designer.cs">
+      <DependentUpon>TicketCustomerUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\TicketItemMobileUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\TicketItemMobileUC.Designer.cs">
+      <DependentUpon>TicketItemMobileUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\Flight\BillTicketUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -507,6 +519,9 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Usercontrols\TicketItemMobileUC.resx">
+      <DependentUpon>TicketItemMobileUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\Flight\BillTicketUC.resx">
       <DependentUpon>BillTicketUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -654,6 +669,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\FormMainCustomerWindown.resx">
       <DependentUpon>FormMainCustomerWindown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\Ticket\TicketCustomerUC.resx">
+      <DependentUpon>TicketCustomerUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login\ForgotPassword1.resx">
       <DependentUpon>ForgotPassword1.cs</DependentUpon>
