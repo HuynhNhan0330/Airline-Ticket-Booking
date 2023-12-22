@@ -1,4 +1,5 @@
-﻿using Airline_Ticket_Booking.DTOs;
+﻿using Airline_Ticket_Booking.AControls;
+using Airline_Ticket_Booking.DTOs;
 using Airline_Ticket_Booking.Utils;
 using System;
 using System.Collections.Generic;
@@ -49,8 +50,16 @@ namespace Airline_Ticket_Booking.Usercontrols
 
         private void FlightMobileItemUC_Click(object sender, EventArgs e)
         {
-            FormMainCustomerWindown formMainCustomerWindown = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
-            formMainCustomerWindown.addBody(new BookTicketUC(flight));
+            if (DateTime.Now.AddDays(ParametersDTO.Ins.EarliestBookingTime) <= flight.DepartureDateTime)
+            {
+                FormMainCustomerWindown formMainCustomerWindown = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
+                formMainCustomerWindown.addBody(new BookTicketUC(flight));
+            }
+            else
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Hiện tại đã trễ để đặt vé chuyến bay này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
         }
     }
 }

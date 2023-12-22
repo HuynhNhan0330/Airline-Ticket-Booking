@@ -34,6 +34,8 @@ namespace Airline_Ticket_Booking
         #region Event form
         private void FormMainCustomerWindown_Load(object sender, EventArgs e)
         {
+            _ = ParametersDAL.Ins.getParameters();
+
             currentButton = abtnFlight;
             loadBody(new FlightCustomerUC());
         }

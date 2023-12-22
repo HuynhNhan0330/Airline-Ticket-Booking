@@ -49,6 +49,7 @@
             this.lbDeparture.Size = new System.Drawing.Size(53, 20);
             this.lbDeparture.TabIndex = 0;
             this.lbDeparture.Text = "label1";
+            this.lbDeparture.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             // 
             // lbArrival
             // 
@@ -62,6 +63,7 @@
             this.lbArrival.Size = new System.Drawing.Size(70, 20);
             this.lbArrival.TabIndex = 1;
             this.lbArrival.Text = "lbArrival";
+            this.lbArrival.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             // 
             // lbTime
             // 
@@ -74,6 +76,7 @@
             this.lbTime.Size = new System.Drawing.Size(59, 20);
             this.lbTime.TabIndex = 2;
             this.lbTime.Text = "lbTime";
+            this.lbTime.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             // 
             // lbPrice
             // 
@@ -86,6 +89,7 @@
             this.lbPrice.Size = new System.Drawing.Size(53, 20);
             this.lbPrice.TabIndex = 3;
             this.lbPrice.Text = "label4";
+            this.lbPrice.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             // 
             // pnLine
             // 
@@ -107,6 +111,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             // 
             // FlightMobileItemUC
             // 
