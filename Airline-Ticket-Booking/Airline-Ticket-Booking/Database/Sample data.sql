@@ -86,8 +86,8 @@ INSERT INTO SEAT (SeatID, PlaneID, TicketClassID) VALUES
 	('A4', 'PE0002', 'TC0002'),
 	('A5', 'PE0002', 'TC0002'),
 	('A6', 'PE0002', 'TC0002'),
-	('B1', 'PE0002', 'TC0002'),
-	('B2', 'PE0002', 'TC0002'),
+	('B1', 'PE0002', 'TC0001'),
+	('B2', 'PE0002', 'TC0001'),
 	('B3', 'PE0002', 'TC0001'),
 	('B4', 'PE0002', 'TC0001'),
 	('B5', 'PE0002', 'TC0001'),
@@ -250,16 +250,9 @@ BEGIN
     SET @i = @i + 1;
 END
 
-SELECT * FROM MESSAGE
-SELECT * FROM ACCOUNT
-
-DELETE FROM MESSAGE
-
-
-
 INSERT INTO MESSAGE(MessageID, TexterID, RecipientID, Text, Created)
 VALUES
 	('MS0001', 'AC0005', 'AC0001', N'Tôi cần giúp đỡ', '1/12/2023 1:10:00'),
 	('MS0002', 'AC0001', 'AC0005', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:12:00'),
-	('MS0003', 'AC0006', 'AC0001', N'CTôi cần giúp đỡ', '1/12/2023 1:15:00'),
+	('MS0003', 'AC0006', 'AC0001', N'Tôi cần giúp đỡ', '1/12/2023 1:15:00'),
 	('MS0004', 'AC0001', 'AC0006', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:30:00')

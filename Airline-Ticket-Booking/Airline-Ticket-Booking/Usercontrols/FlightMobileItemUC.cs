@@ -46,5 +46,11 @@ namespace Airline_Ticket_Booking.Usercontrols
 
             lbPrice.Left = this.Width - lbPrice.Width - 30;
         }
+
+        private void FlightMobileItemUC_Click(object sender, EventArgs e)
+        {
+            FormMainCustomerWindown formMainCustomerWindown = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
+            formMainCustomerWindown.addBody(new BookTicketUC(flight));
+        }
     }
 }

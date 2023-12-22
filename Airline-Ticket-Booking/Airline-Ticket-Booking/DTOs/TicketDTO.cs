@@ -20,5 +20,6 @@ namespace Airline_Ticket_Booking.DTOs
         public string SeatID { get; set; }
         public string FlightStatus { get; set; }
         public DateTime DepartureDateTime { get; set; }
+        public string accountID {  get; set; }
     }
 }

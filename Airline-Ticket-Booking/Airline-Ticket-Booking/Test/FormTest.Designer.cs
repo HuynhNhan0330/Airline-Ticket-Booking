@@ -30,7 +30,7 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.chatUC1 = new Airline_Ticket_Booking.ChatUC();
+            this.seatMobilieItemUC1 = new Airline_Ticket_Booking.Usercontrols.SeatMobilieItemUC();
             this.SuspendLayout();
             // 
             // textBox1
@@ -50,19 +50,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // chatUC1
+            // seatMobilieItemUC1
             // 
-            this.chatUC1.Location = new System.Drawing.Point(416, 47);
-            this.chatUC1.Name = "chatUC1";
-            this.chatUC1.Size = new System.Drawing.Size(500, 550);
-            this.chatUC1.TabIndex = 2;
+            this.seatMobilieItemUC1.Location = new System.Drawing.Point(315, 260);
+            this.seatMobilieItemUC1.Name = "seatMobilieItemUC1";
+            this.seatMobilieItemUC1.Size = new System.Drawing.Size(497, 50);
+            this.seatMobilieItemUC1.TabIndex = 2;
             // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 678);
-            this.Controls.Add(this.chatUC1);
+            this.Controls.Add(this.seatMobilieItemUC1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "FormTest";
@@ -76,6 +76,6 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private ChatUC chatUC1;
+        private Usercontrols.SeatMobilieItemUC seatMobilieItemUC1;
     }
 }

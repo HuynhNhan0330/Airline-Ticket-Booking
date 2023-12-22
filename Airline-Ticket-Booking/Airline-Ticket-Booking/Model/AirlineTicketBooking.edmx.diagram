@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1b94dbbc93b444e98e51b709623cc38b" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.ACCOUNT" Width="1.5" PointX="13" PointY="1" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.ACCOUNT" Width="1.5" PointX="10" PointY="1" />
         <EntityTypeShape EntityType="AirlineTicketBookingModel.AIRPORT" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.ANNUAL_REVENUE_REPORT" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_ANNUAL_REVENUE_REPORT" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_MONTHLY_REVENUE_REPORT" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.ANNUAL_REVENUE_REPORT" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_ANNUAL_REVENUE_REPORT" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.DETAILED_MONTHLY_REVENUE_REPORT" Width="1.5" PointX="5.25" PointY="7.875" />
         <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT" Width="1.5" PointX="3" PointY="6" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_DETAIL" Width="1.5" PointX="5.25" PointY="2.75" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET" Width="1.5" PointX="5.25" PointY="6.125" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET_CLASS_DETAIL" Width="1.5" PointX="8.25" PointY="6.5" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.MESSAGE" Width="1.5" PointX="15.25" PointY="1.375" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.Parameter" Width="1.5" PointX="2.75" PointY="10.75" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.PERMISSION" Width="1.5" PointX="10.75" PointY="1.5" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_DETAIL" Width="1.5" PointX="8.25" PointY="6.75" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET" Width="1.5" PointX="5.25" PointY="13.875" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.FLIGHT_TICKET_CLASS_DETAIL" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.MESSAGE" Width="1.5" PointX="12.25" PointY="1.375" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.Parameter" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.PERMISSION" Width="1.5" PointX="7.75" PointY="1.5" />
         <EntityTypeShape EntityType="AirlineTicketBookingModel.PLANE" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="AirlineTicketBookingModel.SEAT" Width="1.5" PointX="8.25" PointY="3.25" />
+        <EntityTypeShape EntityType="AirlineTicketBookingModel.SEAT" Width="1.5" PointX="5.25" PointY="1.25" />
         <EntityTypeShape EntityType="AirlineTicketBookingModel.TICKET_CLASS" Width="1.5" PointX="3" PointY="2.75" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__ACCOUNT__RoleID__534D60F1" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__MESSAGE__TexterI__52593CB8" />
@@ -28,9 +28,8 @@
         <AssociationConnector Association="AirlineTicketBookingModel.FK__DETAILED___Fligh__5EBF139D" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT__PlaneID__59FA5E80" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_DE__Fligh__571DF1D5" />
-        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5441852A" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5DCAEF64" />
-        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5535A963" />
+        <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__619B8048" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5CD6CB2B" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__SEAT__PlaneID__5AEE82B9" />
         <AssociationConnector Association="AirlineTicketBookingModel.FK__SEAT__TicketClas__5BE2A6F2" />

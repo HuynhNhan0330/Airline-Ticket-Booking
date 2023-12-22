@@ -40,6 +40,7 @@
             // lbDeparture
             // 
             this.lbDeparture.AutoSize = true;
+            this.lbDeparture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbDeparture.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDeparture.ForeColor = System.Drawing.Color.Black;
             this.lbDeparture.Location = new System.Drawing.Point(15, 15);
@@ -52,6 +53,7 @@
             // lbArrival
             // 
             this.lbArrival.AutoSize = true;
+            this.lbArrival.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbArrival.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbArrival.ForeColor = System.Drawing.Color.Black;
             this.lbArrival.Location = new System.Drawing.Point(15, 45);
@@ -64,6 +66,7 @@
             // lbTime
             // 
             this.lbTime.AutoSize = true;
+            this.lbTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTime.ForeColor = System.Drawing.Color.Black;
             this.lbTime.Location = new System.Drawing.Point(15, 70);
@@ -75,6 +78,7 @@
             // lbPrice
             // 
             this.lbPrice.AutoSize = true;
+            this.lbPrice.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrice.ForeColor = System.Drawing.Color.Black;
             this.lbPrice.Location = new System.Drawing.Point(406, 89);
@@ -86,6 +90,7 @@
             // pnLine
             // 
             this.pnLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(210)))));
+            this.pnLine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnLine.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnLine.Location = new System.Drawing.Point(0, 147);
             this.pnLine.Name = "pnLine";
@@ -94,6 +99,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Airline_Ticket_Booking.Properties.Resources.airplane;
             this.pictureBox1.Location = new System.Drawing.Point(399, 15);
             this.pictureBox1.Name = "pictureBox1";
@@ -113,8 +119,10 @@
             this.Controls.Add(this.lbTime);
             this.Controls.Add(this.lbArrival);
             this.Controls.Add(this.lbDeparture);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "FlightMobileItemUC";
             this.Size = new System.Drawing.Size(497, 150);
+            this.Click += new System.EventHandler(this.FlightMobileItemUC_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -81,7 +81,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\Customer\Flight\BillTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\Flight\BillTicketUC.Designer.cs">
+      <DependentUpon>BillTicketUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\Flight\BookTicket1UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\Flight\BookTicket1UC.Designer.cs">
+      <DependentUpon>BookTicket1UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\Flight\BookTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Customer\Flight\BookTicketUC.Designer.cs">
+      <DependentUpon>BookTicketUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="DALs\MessageDAL.cs" />
+    <Compile Include="Usercontrols\SeatMobilieItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrols\SeatMobilieItemUC.Designer.cs">
+      <DependentUpon>SeatMobilieItemUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ChatUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -483,6 +507,18 @@
     <Compile Include="View\Login\RegisterUC.Designer.cs">
       <DependentUpon>RegisterUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Customer\Flight\BillTicketUC.resx">
+      <DependentUpon>BillTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\Flight\BookTicket1UC.resx">
+      <DependentUpon>BookTicket1UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Customer\Flight\BookTicketUC.resx">
+      <DependentUpon>BookTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrols\SeatMobilieItemUC.resx">
+      <DependentUpon>SeatMobilieItemUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChatUC.resx">
       <DependentUpon>ChatUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -681,6 +717,7 @@
     <Content Include="Resources\calendarWhite.png" />
     <Content Include="Resources\cancel-ticket.png" />
     <Content Include="Resources\ChatIcon.png" />
+    <None Include="Resources\checked.png" />
     <Content Include="Resources\closeIcon.png" />
     <Content Include="Resources\CloseIcon2.png" />
     <None Include="Resources\ContactActive.png" />
@@ -698,6 +735,7 @@
     <None Include="Resources\FlightDown.png" />
     <Content Include="Resources\hide.png" />
     <Content Include="Resources\HomeAdminImg-removebg-preview.png" />
+    <None Include="Resources\house.png" />
     <Content Include="Resources\InformationIcon.png" />
     <None Include="Resources\log-out.png" />
     <Content Include="Resources\LogoMAT.png" />
@@ -708,6 +746,15 @@
     <None Include="Resources\ticketDeactive.png" />
     <None Include="Resources\ticketActive.png" />
     <None Include="Resources\SendIcon.png" />
+    <None Include="Resources\return1.png" />
+    <None Include="Resources\SeatUniversal.png" />
+    <None Include="Resources\SeatUniversalBlue.png" />
+    <None Include="Resources\SeatUniversalGreen.png" />
+    <None Include="Resources\SeatUniversalRed.png" />
+    <None Include="Resources\SeatTrader.png" />
+    <None Include="Resources\SeatTraderBlue.png" />
+    <None Include="Resources\SeatTraderGreen.png" />
+    <None Include="Resources\SeatTraderRed.png" />
     <Content Include="Resources\TicketIcon.png" />
     <None Include="Resources\user.png" />
     <Content Include="Resources\view.png" />

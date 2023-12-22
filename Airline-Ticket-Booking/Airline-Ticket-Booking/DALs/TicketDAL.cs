@@ -46,6 +46,7 @@ namespace Airline_Ticket_Booking.DALs
                         Email = ticket.Email,
                         Price = ticket.Price,
                         SeatID = ticket.SeatID,
+                        AccountID = ticket.accountID
                     };
 
                     if (string.IsNullOrEmpty(ticket.SeatID))

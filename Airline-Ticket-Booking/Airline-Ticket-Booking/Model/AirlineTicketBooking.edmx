@@ -94,6 +94,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="SeatID" Type="varchar" MaxLength="20" />
           <Property Name="FlightStatus" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AccountID" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="FLIGHT_TICKET_CLASS_DETAIL">
           <Key>
@@ -246,18 +247,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FLIGHT_TI__Fligh__5441852A">
-          <End Role="FLIGHT" Type="Self.FLIGHT" Multiplicity="1" />
-          <End Role="FLIGHT_TICKET" Type="Self.FLIGHT_TICKET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FLIGHT">
-              <PropertyRef Name="FlightID" />
-            </Principal>
-            <Dependent Role="FLIGHT_TICKET">
-              <PropertyRef Name="FlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__FLIGHT_TI__Fligh__5DCAEF64">
           <End Role="FLIGHT" Type="Self.FLIGHT" Multiplicity="1" />
           <End Role="FLIGHT_TICKET_CLASS_DETAIL" Type="Self.FLIGHT_TICKET_CLASS_DETAIL" Multiplicity="*" />
@@ -270,15 +259,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FLIGHT_TI__Ticke__5535A963">
-          <End Role="TICKET_CLASS" Type="Self.TICKET_CLASS" Multiplicity="1" />
+        <Association Name="FK__FLIGHT_TI__Fligh__619B8048">
+          <End Role="FLIGHT" Type="Self.FLIGHT" Multiplicity="1" />
           <End Role="FLIGHT_TICKET" Type="Self.FLIGHT_TICKET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TICKET_CLASS">
-              <PropertyRef Name="TicketClassID" />
+            <Principal Role="FLIGHT">
+              <PropertyRef Name="FlightID" />
             </Principal>
             <Dependent Role="FLIGHT_TICKET">
-              <PropertyRef Name="TicketClassID" />
+              <PropertyRef Name="FlightID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -374,16 +363,12 @@
             <End Role="AIRPORT" EntitySet="AIRPORT" />
             <End Role="FLIGHT_DETAIL" EntitySet="FLIGHT_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__FLIGHT_TI__Fligh__5441852A" Association="Self.FK__FLIGHT_TI__Fligh__5441852A">
-            <End Role="FLIGHT" EntitySet="FLIGHT" />
-            <End Role="FLIGHT_TICKET" EntitySet="FLIGHT_TICKET" />
-          </AssociationSet>
           <AssociationSet Name="FK__FLIGHT_TI__Fligh__5DCAEF64" Association="Self.FK__FLIGHT_TI__Fligh__5DCAEF64">
             <End Role="FLIGHT" EntitySet="FLIGHT" />
             <End Role="FLIGHT_TICKET_CLASS_DETAIL" EntitySet="FLIGHT_TICKET_CLASS_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__FLIGHT_TI__Ticke__5535A963" Association="Self.FK__FLIGHT_TI__Ticke__5535A963">
-            <End Role="TICKET_CLASS" EntitySet="TICKET_CLASS" />
+          <AssociationSet Name="FK__FLIGHT_TI__Fligh__619B8048" Association="Self.FK__FLIGHT_TI__Fligh__619B8048">
+            <End Role="FLIGHT" EntitySet="FLIGHT" />
             <End Role="FLIGHT_TICKET" EntitySet="FLIGHT_TICKET" />
           </AssociationSet>
           <AssociationSet Name="FK__FLIGHT_TI__Ticke__5CD6CB2B" Association="Self.FK__FLIGHT_TI__Ticke__5CD6CB2B">
@@ -455,16 +440,12 @@
             <End Role="FLIGHT" EntitySet="FLIGHTs" />
             <End Role="FLIGHT_DETAIL" EntitySet="FLIGHT_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__FLIGHT_TI__Fligh__5441852A" Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5441852A">
-            <End Role="FLIGHT" EntitySet="FLIGHTs" />
-            <End Role="FLIGHT_TICKET" EntitySet="FLIGHT_TICKET" />
-          </AssociationSet>
           <AssociationSet Name="FK__FLIGHT_TI__Fligh__5DCAEF64" Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5DCAEF64">
             <End Role="FLIGHT" EntitySet="FLIGHTs" />
             <End Role="FLIGHT_TICKET_CLASS_DETAIL" EntitySet="FLIGHT_TICKET_CLASS_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__FLIGHT_TI__Ticke__5535A963" Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5535A963">
-            <End Role="TICKET_CLASS" EntitySet="TICKET_CLASS" />
+          <AssociationSet Name="FK__FLIGHT_TI__Fligh__619B8048" Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__619B8048">
+            <End Role="FLIGHT" EntitySet="FLIGHTs" />
             <End Role="FLIGHT_TICKET" EntitySet="FLIGHT_TICKET" />
           </AssociationSet>
           <AssociationSet Name="FK__FLIGHT_TI__Ticke__5CD6CB2B" Association="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5CD6CB2B">
@@ -555,8 +536,8 @@
           <NavigationProperty Name="DETAILED_MONTHLY_REVENUE_REPORT" Relationship="AirlineTicketBookingModel.FK__DETAILED___Fligh__5EBF139D" FromRole="FLIGHT" ToRole="DETAILED_MONTHLY_REVENUE_REPORT" />
           <NavigationProperty Name="PLANE" Relationship="AirlineTicketBookingModel.FK__FLIGHT__PlaneID__59FA5E80" FromRole="FLIGHT" ToRole="PLANE" />
           <NavigationProperty Name="FLIGHT_DETAIL" Relationship="AirlineTicketBookingModel.FK__FLIGHT_DE__Fligh__571DF1D5" FromRole="FLIGHT" ToRole="FLIGHT_DETAIL" />
-          <NavigationProperty Name="FLIGHT_TICKET" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5441852A" FromRole="FLIGHT" ToRole="FLIGHT_TICKET" />
           <NavigationProperty Name="FLIGHT_TICKET_CLASS_DETAIL" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5DCAEF64" FromRole="FLIGHT" ToRole="FLIGHT_TICKET_CLASS_DETAIL" />
+          <NavigationProperty Name="FLIGHT_TICKET" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__619B8048" FromRole="FLIGHT" ToRole="FLIGHT_TICKET" />
         </EntityType>
         <EntityType Name="FLIGHT_DETAIL">
           <Key>
@@ -584,8 +565,8 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SeatID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FlightStatus" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="FLIGHT" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__5441852A" FromRole="FLIGHT_TICKET" ToRole="FLIGHT" />
-          <NavigationProperty Name="TICKET_CLASS" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5535A963" FromRole="FLIGHT_TICKET" ToRole="TICKET_CLASS" />
+          <Property Name="AccountID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FLIGHT" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Fligh__619B8048" FromRole="FLIGHT_TICKET" ToRole="FLIGHT" />
         </EntityType>
         <EntityType Name="FLIGHT_TICKET_CLASS_DETAIL">
           <Key>
@@ -661,7 +642,6 @@
           <Property Name="TicketClassID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TicketClassName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="PricePercentage" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FLIGHT_TICKET" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5535A963" FromRole="TICKET_CLASS" ToRole="FLIGHT_TICKET" />
           <NavigationProperty Name="FLIGHT_TICKET_CLASS_DETAIL" Relationship="AirlineTicketBookingModel.FK__FLIGHT_TI__Ticke__5CD6CB2B" FromRole="TICKET_CLASS" ToRole="FLIGHT_TICKET_CLASS_DETAIL" />
           <NavigationProperty Name="SEATs" Relationship="AirlineTicketBookingModel.FK__SEAT__TicketClas__5BE2A6F2" FromRole="TICKET_CLASS" ToRole="SEAT" />
         </EntityType>
@@ -761,18 +741,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FLIGHT_TI__Fligh__5441852A">
-          <End Type="AirlineTicketBookingModel.FLIGHT" Role="FLIGHT" Multiplicity="1" />
-          <End Type="AirlineTicketBookingModel.FLIGHT_TICKET" Role="FLIGHT_TICKET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FLIGHT">
-              <PropertyRef Name="FlightID" />
-            </Principal>
-            <Dependent Role="FLIGHT_TICKET">
-              <PropertyRef Name="FlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__FLIGHT_TI__Fligh__5DCAEF64">
           <End Type="AirlineTicketBookingModel.FLIGHT" Role="FLIGHT" Multiplicity="1" />
           <End Type="AirlineTicketBookingModel.FLIGHT_TICKET_CLASS_DETAIL" Role="FLIGHT_TICKET_CLASS_DETAIL" Multiplicity="*" />
@@ -785,15 +753,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FLIGHT_TI__Ticke__5535A963">
-          <End Type="AirlineTicketBookingModel.TICKET_CLASS" Role="TICKET_CLASS" Multiplicity="1" />
+        <Association Name="FK__FLIGHT_TI__Fligh__619B8048">
+          <End Type="AirlineTicketBookingModel.FLIGHT" Role="FLIGHT" Multiplicity="1" />
           <End Type="AirlineTicketBookingModel.FLIGHT_TICKET" Role="FLIGHT_TICKET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TICKET_CLASS">
-              <PropertyRef Name="TicketClassID" />
+            <Principal Role="FLIGHT">
+              <PropertyRef Name="FlightID" />
             </Principal>
             <Dependent Role="FLIGHT_TICKET">
-              <PropertyRef Name="TicketClassID" />
+              <PropertyRef Name="FlightID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -833,7 +801,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -920,6 +888,7 @@
           <EntitySetMapping Name="FLIGHT_TICKET">
             <EntityTypeMapping TypeName="AirlineTicketBookingModel.FLIGHT_TICKET">
               <MappingFragment StoreEntitySet="FLIGHT_TICKET">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
                 <ScalarProperty Name="SeatID" ColumnName="SeatID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

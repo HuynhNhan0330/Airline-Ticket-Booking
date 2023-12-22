@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations.Builders;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -42,15 +43,6 @@ namespace Airline_Ticket_Booking
         private void pibClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void piNotification_Click(object sender, EventArgs e)
-        {
-            if (currentButton != null)
-            {
-                doDeactiveButton(currentButton);
-                currentButton = null;
-            }
         }
 
         #endregion
@@ -124,18 +116,12 @@ namespace Airline_Ticket_Booking
         }
 
 
-        private void abtnFlight_Click(object sender, EventArgs e)
+        public void abtnFlight_Click(object sender, EventArgs e)
         {
-            AButton abtnChoose = sender as AButton;
+            if (currentButton != null) doDeactiveButton(currentButton);
+            doActiveButton(abtnFlight);
 
-            if (abtnChoose != currentButton)
-            {
-                if (currentButton != null) doDeactiveButton(currentButton);
-                doActiveButton(abtnChoose);
-                currentButton = abtnChoose;
-
-                loadBody(new FlightCustomerUC());
-            }
+            loadBody(new FlightCustomerUC());
         }
 
         private void abtnTicket_Click(object sender, EventArgs e)
