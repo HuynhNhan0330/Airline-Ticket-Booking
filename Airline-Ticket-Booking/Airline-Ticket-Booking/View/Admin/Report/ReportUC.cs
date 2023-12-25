@@ -10,9 +10,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Airline_Ticket_Booking
@@ -236,6 +239,11 @@ namespace Airline_Ticket_Booking
 
         private void abtnExportExcel_Click(object sender, EventArgs e)
         {
+            exportExcel();
+        }
+
+        private string exportExcel()
+        {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Files|*.xlsx;*.xlsm";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -256,7 +264,7 @@ namespace Airline_Ticket_Booking
                         totalRevenue = uc.totalRevenue,
                         data = uc.detailedMonthlyRevenueReports.ToArray()
                     };
-                    
+
                     MiniExcel.SaveAsByTemplate(PATH_EXPORT, PATH_TEMPLATE, value);
                     Process.Start(PATH_EXPORT);
                 }
@@ -277,6 +285,56 @@ namespace Airline_Ticket_Booking
 
                     MiniExcel.SaveAsByTemplate(PATH_EXPORT, PATH_TEMPLATE, value);
                     Process.Start(PATH_EXPORT);
+                }
+
+                return PATH_EXPORT;
+            }
+
+            return null;
+        }
+
+        private void abtnSendEmail_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(atxbEmail.Texts.Trim()))
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Email không được trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+            else
+            {
+                // Thông tin tài khoản Gmail
+                string email = "nhanhelpxx@gmail.com";
+                string password = "xxts wmgb aeoe favp";
+
+                // Tạo đối tượng MailMessage
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress(email);
+                message.To.Add(atxbEmail.Texts.Trim());
+                message.Subject = "Báo cáo ";
+                if (cbTypeReport.SelectedIndex == 0)
+                    message.Subject += "tháng " + adtpTime.Value.Month + "/" + adtpTime.Value.Year;
+                else
+                    message.Subject += "năm " + adtpTime.Value.Year;
+                // Tạo ngẫu nhiên
+                message.Body = message.Subject + ":";
+
+                // Tạo đối tượng SmtpClient và cấu hình thông tin SMTP của Gmail
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Credentials = new NetworkCredential(email, password);
+                Attachment attachment = new Attachment(exportExcel());
+                message.Attachments.Add(attachment);
+                try
+                {
+                    // Gửi email
+                    smtpClient.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    AMessageBoxFrm ms = new AMessageBoxFrm(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ms.ShowDialog();
                 }
             }
         }

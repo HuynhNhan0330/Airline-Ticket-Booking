@@ -81,6 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\Admin\Report\ReportByYearUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Report\ReportByYearUC.Designer.cs">
+      <DependentUpon>ReportByYearUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer\Ticket\TicketCustomerUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -441,12 +447,6 @@
     <Compile Include="View\Admin\Report\ReportByMonthUC.Designer.cs">
       <DependentUpon>ReportByMonthUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Admin\Report\ReportByYearUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Admin\Report\ReportByYearUC.Designer.cs">
-      <DependentUpon>ReportByYearUC.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Admin\Report\ReportUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -521,6 +521,9 @@
     </Compile>
     <EmbeddedResource Include="Usercontrols\TicketItemMobileUC.resx">
       <DependentUpon>TicketItemMobileUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Admin\Report\ReportByYearUC.resx">
+      <DependentUpon>ReportByYearUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Customer\Flight\BillTicketUC.resx">
       <DependentUpon>BillTicketUC.cs</DependentUpon>
@@ -648,9 +651,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Admin\Report\ReportByMonthUC.resx">
       <DependentUpon>ReportByMonthUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Admin\Report\ReportByYearUC.resx">
-      <DependentUpon>ReportByYearUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Admin\Report\ReportUC.resx">
       <DependentUpon>ReportUC.cs</DependentUpon>

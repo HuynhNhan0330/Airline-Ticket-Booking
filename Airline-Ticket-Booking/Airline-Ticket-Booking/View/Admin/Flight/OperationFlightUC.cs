@@ -186,6 +186,11 @@ namespace Airline_Ticket_Booking
                 AMessageBoxFrm ms = new AMessageBoxFrm("Sân bay đi và sân bay đến không được trùng nhau", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
+            else if (!(int.Parse(atxbHour.Texts.Trim()) < 24 && int.Parse(atxbHour.Texts.Trim()) >= 0 && int.Parse(atxbMinute.Texts.Trim()) < 60 && int.Parse(atxbMinute.Texts.Trim()) >= 0))
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Thời gian bay không phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
             else if (int.Parse(atxbFlightDuration.Texts.Trim()) < ParametersDTO.Ins.MinimumFlightTime)
             {
                 AMessageBoxFrm ms = new AMessageBoxFrm("Thời gian bay ít nhất bằng " + ParametersDTO.Ins.MinimumFlightTime, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -428,6 +433,21 @@ namespace Airline_Ticket_Booking
             {
                 AMessageBoxFrm ms = new AMessageBoxFrm("Dữ liệu của giá vé bị trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 atxbTicketPrice.Focus();
+                ms.ShowDialog();
+            }
+            else if (!(int.Parse(atxbHour.Texts.Trim()) < 24 && int.Parse(atxbHour.Texts.Trim()) >= 0 && int.Parse(atxbMinute.Texts.Trim()) < 60 && int.Parse(atxbMinute.Texts.Trim()) >= 0))
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Thời gian bay không phù hợp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+            else if (flight.DepartureAirportName == flight.ArrivalAirportName)
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Sân bay đi và sân bay đến không được trùng nhau", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+            else if (int.Parse(atxbFlightDuration.Texts.Trim()) < ParametersDTO.Ins.MinimumFlightTime)
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Thời gian bay ít nhất bằng " + ParametersDTO.Ins.MinimumFlightTime, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
             else
