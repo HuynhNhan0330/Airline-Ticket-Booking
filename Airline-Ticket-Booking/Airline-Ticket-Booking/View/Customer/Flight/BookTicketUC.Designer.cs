@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pibReturn = new System.Windows.Forms.PictureBox();
             this.abtnNext = new Airline_Ticket_Booking.AControls.AButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.aPanel3 = new Airline_Ticket_Booking.AControls.APanel();
             this.cbTicketClass = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.aPanel4 = new Airline_Ticket_Booking.AControls.APanel();
             this.atxbIDCard = new Airline_Ticket_Booking.AControls.ATextboxUC();
             this.aPanel2 = new Airline_Ticket_Booking.AControls.APanel();
@@ -47,12 +46,13 @@
             this.lbPhone = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
+            this.pibReturn = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pibReturn)).BeginInit();
             this.aPanel3.SuspendLayout();
             this.aPanel4.SuspendLayout();
             this.aPanel2.SuspendLayout();
             this.aPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibReturn)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,39 +70,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 605);
             this.panel1.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(50, 487);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
-            this.label6.TabIndex = 51;
-            this.label6.Text = "Hạng vé";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(50, 422);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 20);
-            this.label5.TabIndex = 49;
-            this.label5.Text = "CMND/CCCD";
-            // 
-            // pibReturn
-            // 
-            this.pibReturn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pibReturn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pibReturn.Image = global::Airline_Ticket_Booking.Properties.Resources.return1;
-            this.pibReturn.Location = new System.Drawing.Point(10, 10);
-            this.pibReturn.Name = "pibReturn";
-            this.pibReturn.Size = new System.Drawing.Size(32, 32);
-            this.pibReturn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pibReturn.TabIndex = 13;
-            this.pibReturn.TabStop = false;
-            this.pibReturn.Click += new System.EventHandler(this.pibReturn_Click);
             // 
             // abtnNext
             // 
@@ -126,6 +93,16 @@
             this.abtnNext.ThinknessLine = 0;
             this.abtnNext.UseVisualStyleBackColor = false;
             this.abtnNext.Click += new System.EventHandler(this.abtnNext_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label6.Location = new System.Drawing.Point(50, 487);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "Hạng vé";
             // 
             // aPanel3
             // 
@@ -153,6 +130,16 @@
             this.cbTicketClass.Name = "cbTicketClass";
             this.cbTicketClass.Size = new System.Drawing.Size(277, 28);
             this.cbTicketClass.TabIndex = 53;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.Location = new System.Drawing.Point(50, 422);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 20);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "CMND/CCCD";
             // 
             // aPanel4
             // 
@@ -196,6 +183,7 @@
             this.atxbIDCard.textAlign = Airline_Ticket_Booking.AControls.ATextboxUC.TextAlign.Left;
             this.atxbIDCard.Texts = "";
             this.atxbIDCard.UnderlinedStyle = false;
+            this.atxbIDCard._KeyDown += new System.EventHandler(this.atxbIDCard__KeyDown);
             // 
             // aPanel2
             // 
@@ -315,6 +303,19 @@
             this.lbName.TabIndex = 0;
             this.lbName.Text = "Huỳnh Mai Cao Nhân";
             // 
+            // pibReturn
+            // 
+            this.pibReturn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pibReturn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pibReturn.Image = global::Airline_Ticket_Booking.Properties.Resources.return1;
+            this.pibReturn.Location = new System.Drawing.Point(10, 10);
+            this.pibReturn.Name = "pibReturn";
+            this.pibReturn.Size = new System.Drawing.Size(32, 32);
+            this.pibReturn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pibReturn.TabIndex = 13;
+            this.pibReturn.TabStop = false;
+            this.pibReturn.Click += new System.EventHandler(this.pibReturn_Click);
+            // 
             // BookTicketUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,13 +327,13 @@
             this.Load += new System.EventHandler(this.BookTicketUC_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pibReturn)).EndInit();
             this.aPanel3.ResumeLayout(false);
             this.aPanel4.ResumeLayout(false);
             this.aPanel2.ResumeLayout(false);
             this.aPanel2.PerformLayout();
             this.aPanel1.ResumeLayout(false);
             this.aPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibReturn)).EndInit();
             this.ResumeLayout(false);
 
         }

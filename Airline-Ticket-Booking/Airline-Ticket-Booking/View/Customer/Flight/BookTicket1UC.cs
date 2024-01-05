@@ -11,12 +11,15 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.IO;
 
 namespace Airline_Ticket_Booking
 {
@@ -26,6 +29,7 @@ namespace Airline_Ticket_Booking
         private TicketClassDTO ticketClass;
         private TicketDTO ticket;
         public string CurrentSeatID = null;
+        private decimal price;
 
         public BookTicketUC1()
         {
@@ -40,6 +44,7 @@ namespace Airline_Ticket_Booking
             this.ticket = ticket;
             loadSeat();
             ticket.Price = flight.TicketPrice * ticketClass.PricePercentage / 100;
+            price = ticket.Price;
             lbMoney.Text = Helper.FormatVNMoney(ticket.Price);
             lbMoney.Left = this.Width - lbMoney.Width - 25;
         }
@@ -111,10 +116,18 @@ namespace Airline_Ticket_Booking
                 AMessageBoxFrm ms = new AMessageBoxFrm("Vui lòng chọn ghế thích hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
+            if (this.price > Helper.getAccountCustomer().Cash)
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Số tiền hiện tại không đủ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
             else
             {
+                AccountDTO account = Helper.getAccountCustomer();
+                account.Cash -= this.price;
+
                 ticket.SeatID = CurrentSeatID;
-                ticket.accountID = Helper.getAccountCustomer().AccountID;
+                ticket.accountID = account.AccountID;
                 CreateTicket(ticket);
             }
         }
@@ -125,12 +138,58 @@ namespace Airline_Ticket_Booking
 
             if (isCreate)
             {
+                (bool isUpdate, string label1) = await FlightTicketClassDetailDAL.Ins.updateFlightTicketClassDetail(flight.FlightID, ticket.TicketClassID);
+
+                sendEmail(ticket);
+
                 FormMainCustomerWindown form = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
                 form.addBody(new BillTicketUC(flight));
             }
             else
             {
                 AMessageBoxFrm ms = new AMessageBoxFrm(label, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+        }
+
+        private void sendEmail(TicketDTO ticket)
+        {
+            String HTML = File.ReadAllText(@"../../HTML/TemplateEmailTicket.txt").Replace("{CUSTOMER_NAME}", ticket.FullName ?? "Bạn")
+            .Replace("{FLIGHT_ID}", ticket.FlightID)
+            .Replace("{SEAT}", ticket.SeatID)
+            .Replace("{NOI_DI}", flight.DepartureCityName)
+            .Replace("{NOI_DEN}", flight.ArrivalCityName)
+            .Replace("{THOI_GIAN}", flight.DepartureDateTime.ToString("HH:mm dd/MM/yyyy"));
+
+            // Thông tin tài khoản Gmail
+            string email = "nhanhelpxx@gmail.com";
+            string password = "xxts wmgb aeoe favp";
+
+            // Tạo đối tượng MailMessage
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(email);
+            message.To.Add(ticket.Email);
+            message.Subject = "[AIRLINEVN] MUA VÉ THÀNH CÔNG ";
+
+            // Tạo ngẫu nhiên
+            message.Body = HTML;
+            message.IsBodyHtml = true;
+
+            // Tạo đối tượng SmtpClient và cấu hình thông tin SMTP của Gmail
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Credentials = new NetworkCredential(email, password);
+
+            try
+            {
+                // Gửi email
+                smtpClient.Send(message);
+            }
+            catch (Exception ex)
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
         }

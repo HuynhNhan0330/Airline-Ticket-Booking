@@ -11,16 +11,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Airline_Ticket_Booking
 {
     public partial class CreateFlightTicketUC : UserControl
     {
         private ObservableCollection<TicketClassDTO> ticketClasses;
-        private ObservableCollection<FlightDTO> flights;
+        private List<FlightDTO> flights;
         private FlightDTO flight = null;
         
         private TicketClassDTO _ticketClassSelected = null;
@@ -107,6 +110,8 @@ namespace Airline_Ticket_Booking
 
             if (isGet)
             {
+                this.flights = new List<FlightDTO>(flights);
+
                 List<string> completes = new List<string>();
 
                 foreach (FlightDTO flight in flights)
@@ -279,6 +284,8 @@ namespace Airline_Ticket_Booking
 
                 FlightTicketUC uc = ctr as FlightTicketUC;
 
+                sendEmail(ticket);
+
                 AMessageBoxFrm ms = new AMessageBoxFrm("Tạo vé thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ms.ShowDialog();
 
@@ -286,12 +293,63 @@ namespace Airline_Ticket_Booking
                 uc.abtnCreateFlightTicket_Click(this, EventArgs.Empty);
                 
                 // Giảm chi tiết hạng vé của từng chuyến bay
-                 (bool isUpdate, string label1) = await FlightTicketClassDetailDAL.Ins.updateFlightTicketClassDetail(flight.FlightID, ticketClassSelected.TicketClassID);
-
+                (bool isUpdate, string label1) = await FlightTicketClassDetailDAL.Ins.updateFlightTicketClassDetail(flight.FlightID, ticketClassSelected.TicketClassID);
             }
             else
             {
                 AMessageBoxFrm ms = new AMessageBoxFrm(label, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+        }
+
+        private void sendEmail(TicketDTO ticket)
+        {
+            foreach (FlightDTO flight in this.flights)
+            {
+                if (flight.FlightID == ticket.FlightID)
+                {
+                    this.flight = flight;
+
+                    break;
+                }
+            }
+
+            String HTML = File.ReadAllText(@"../../HTML/TemplateEmailTicket.txt").Replace("{CUSTOMER_NAME}", ticket.FullName ?? "Bạn")
+            .Replace("{FLIGHT_ID}", ticket.FlightID)
+            .Replace("{SEAT}", ticket.SeatID)
+            .Replace("{NOI_DI}", flight.DepartureCityName)
+            .Replace("{NOI_DEN}", flight.ArrivalCityName)
+            .Replace("{THOI_GIAN}", flight.DepartureDateTime.ToString("HH:mm dd/MM/yyyy"));
+
+            // Thông tin tài khoản Gmail
+            string email = "nhanhelpxx@gmail.com";
+            string password = "xxts wmgb aeoe favp";
+
+            // Tạo đối tượng MailMessage
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(email);
+            message.To.Add(ticket.Email);
+            message.Subject = "[AIRLINEVN] MUA VÉ THÀNH CÔNG ";
+
+            // Tạo ngẫu nhiên
+            message.Body = HTML;
+            message.IsBodyHtml = true;
+
+            // Tạo đối tượng SmtpClient và cấu hình thông tin SMTP của Gmail
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Credentials = new NetworkCredential(email, password);
+
+            try
+            {
+                // Gửi email
+                smtpClient.Send(message);
+            }
+            catch (Exception ex)
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
         }

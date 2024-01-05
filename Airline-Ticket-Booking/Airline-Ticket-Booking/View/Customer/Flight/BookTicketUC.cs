@@ -92,5 +92,10 @@ namespace Airline_Ticket_Booking
             cbTicketClass.DataSource = TicketClass;
             cbTicketClass.DisplayMember = "TicketClassName";
         }
+
+        private void atxbIDCard__KeyDown(object sender, EventArgs e)
+        {
+            Helper.enterOnlyNumber(e);
+        }
     }
 }
