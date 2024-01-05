@@ -1,5 +1,7 @@
 ﻿using Airline_Ticket_Booking.AControls;
+using Airline_Ticket_Booking.DALs;
 using Airline_Ticket_Booking.DTOs;
+using Airline_Ticket_Booking.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,9 +82,19 @@ namespace Airline_Ticket_Booking
                 AMessageBoxFrm ms = new AMessageBoxFrm("Mật khẩu nhập lại không được để trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
-            else if (atxbPassword.Texts.Trim() == atxbRePassword.Texts.Trim())
+            else if (atxbPassword.Texts.Trim() != atxbRePassword.Texts.Trim())
             {
                 AMessageBoxFrm ms = new AMessageBoxFrm("Mật khẩu nhập lại không khớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+            else if (!Helper.checkEmail(atxbEmail.Texts.Trim()))
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Email chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+            else if (!Helper.checkPhone(atxbPhone.Texts.Trim()))
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm("Số điện thoại chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ms.ShowDialog();
             }
             else
@@ -92,14 +104,39 @@ namespace Airline_Ticket_Booking
                 account.Email = atxbEmail.Texts.Trim();
                 account.Phone = atxbPhone.Texts.Trim();
                 account.Password = atxbPassword.Texts.Trim();
+                account.RoleID = "RL0005";
+                account.Created = DateTime.Now;
 
                 regsiter(account);
             }
         }
 
-        private void regsiter(AccountDTO account)
+        private async void regsiter(AccountDTO account)
         {
+            (bool isCreate, string label, string newCode) = await AccountDAL.Ins.createAccount(account);
 
+            if (isCreate)
+            {
+                account.AccountID = newCode;
+
+                AMessageBoxFrm ms = new AMessageBoxFrm("Đăng ký tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ms.ShowDialog();
+            }
+            else
+            {
+                AMessageBoxFrm ms = new AMessageBoxFrm(label, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ms.ShowDialog();
+            }
+        }
+
+        private void atxbName__KeyDown(object sender, EventArgs e)
+        {
+            Helper.enterOnlyLetter(e);
+        }
+
+        private void atxbPhone__KeyDown(object sender, EventArgs e)
+        {
+            Helper.enterOnlyNumber(e);
         }
     }
 }

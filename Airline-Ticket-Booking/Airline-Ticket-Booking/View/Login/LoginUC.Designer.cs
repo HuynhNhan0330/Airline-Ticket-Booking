@@ -69,7 +69,6 @@ namespace Airline_Ticket_Booking
             this.lbRegister.Size = new System.Drawing.Size(69, 18);
             this.lbRegister.TabIndex = 26;
             this.lbRegister.Text = "Đăng ký";
-            this.lbRegister.Visible = false;
             this.lbRegister.Click += new System.EventHandler(this.lbRegister_Click);
             // 
             // label2
@@ -82,7 +81,6 @@ namespace Airline_Ticket_Booking
             this.label2.Size = new System.Drawing.Size(136, 18);
             this.label2.TabIndex = 24;
             this.label2.Text = "Chưa có tài khoản?";
-            this.label2.Visible = false;
             // 
             // lbForgotPassword
             // 
