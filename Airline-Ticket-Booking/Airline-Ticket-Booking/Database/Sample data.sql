@@ -256,3 +256,11 @@ VALUES
 	('MS0002', 'AC0001', 'AC0005', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:12:00'),
 	('MS0003', 'AC0006', 'AC0001', N'Tôi cần giúp đỡ', '1/12/2023 1:15:00'),
 	('MS0004', 'AC0001', 'AC0006', N'Chào bạn, bạn cần giúp đỡ gì vậy', '1/12/2023 1:30:00')
+
+SELECT * FROM MESSAGE
+
+DELETE FROM MESSAGE
+
+INSERT INTO MESSAGE(MessageID, TexterID, RecipientID, Text, Created)
+VALUES
+	('MS0005', 'AC0001', 'AC0005', N'Chào bạn, bạn cần giúp đỡ gì vậy', SYSDATETIME())

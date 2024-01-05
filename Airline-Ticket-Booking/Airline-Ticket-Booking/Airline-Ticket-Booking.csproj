@@ -81,6 +81,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\MESSAGE.cs">
+      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\Report\ReportByYearUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,9 +171,6 @@
     </Compile>
     <Compile Include="View\Customer\Flight\FlightCustomerUC.Designer.cs">
       <DependentUpon>FlightCustomerUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MESSAGE.cs">
-      <DependentUpon>AirlineTicketBooking.tt</DependentUpon>
     </Compile>
     <Compile Include="Usercontrols\FlightMobileItemUC.cs">
       <SubType>UserControl</SubType>

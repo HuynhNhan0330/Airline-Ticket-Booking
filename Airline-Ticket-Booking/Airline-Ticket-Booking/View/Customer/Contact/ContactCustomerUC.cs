@@ -31,6 +31,8 @@ namespace Airline_Ticket_Booking
             chatUC1.type = 1;
 
             (bool isGet, List<MessageDTO> messages, string label) = await MessageDAL.Ins.getMessage(Helper.getAccountCustomer().AccountID , "AC0001");
+            chatUC1.timeGet = DateTime.Now;
+
             if (isGet)
             {
                 chatUC1.loadMessage(messages, Helper.getAccountCustomer().AccountID);

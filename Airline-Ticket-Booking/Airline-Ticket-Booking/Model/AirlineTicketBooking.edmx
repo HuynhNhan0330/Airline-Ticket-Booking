@@ -116,7 +116,7 @@
           <Property Name="TexterID" Type="varchar" MaxLength="20" />
           <Property Name="RecipientID" Type="varchar" MaxLength="20" />
           <Property Name="Text" Type="nvarchar" MaxLength="255" />
-          <Property Name="Created" Type="smalldatetime" />
+          <Property Name="Created" Type="datetime" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
@@ -283,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MESSAGE__TexterI__52593CB8">
+        <Association Name="FK__MESSAGE__TexterI__6FE99F9F">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -375,7 +375,7 @@
             <End Role="TICKET_CLASS" EntitySet="TICKET_CLASS" />
             <End Role="FLIGHT_TICKET_CLASS_DETAIL" EntitySet="FLIGHT_TICKET_CLASS_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__MESSAGE__TexterI__52593CB8" Association="Self.FK__MESSAGE__TexterI__52593CB8">
+          <AssociationSet Name="FK__MESSAGE__TexterI__6FE99F9F" Association="Self.FK__MESSAGE__TexterI__6FE99F9F">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="MESSAGE" EntitySet="MESSAGE" />
           </AssociationSet>
@@ -412,7 +412,7 @@
             <End Role="PERMISSION" EntitySet="PERMISSIONs" />
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MESSAGE__TexterI__52593CB8" Association="AirlineTicketBookingModel.FK__MESSAGE__TexterI__52593CB8">
+          <AssociationSet Name="FK__MESSAGE__TexterI__6FE99F9F" Association="AirlineTicketBookingModel.FK__MESSAGE__TexterI__6FE99F9F">
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
             <End Role="MESSAGE" EntitySet="MESSAGEs" />
           </AssociationSet>
@@ -474,7 +474,7 @@
           <Property Name="RoleID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Cash" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="PERMISSION" Relationship="AirlineTicketBookingModel.FK__ACCOUNT__RoleID__534D60F1" FromRole="ACCOUNT" ToRole="PERMISSION" />
-          <NavigationProperty Name="MESSAGEs" Relationship="AirlineTicketBookingModel.FK__MESSAGE__TexterI__52593CB8" FromRole="ACCOUNT" ToRole="MESSAGE" />
+          <NavigationProperty Name="MESSAGEs" Relationship="AirlineTicketBookingModel.FK__MESSAGE__TexterI__6FE99F9F" FromRole="ACCOUNT" ToRole="MESSAGE" />
         </EntityType>
         <EntityType Name="AIRPORT">
           <Key>
@@ -590,8 +590,8 @@
           <Property Name="TexterID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="RecipientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Created" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ACCOUNT" Relationship="AirlineTicketBookingModel.FK__MESSAGE__TexterI__52593CB8" FromRole="MESSAGE" ToRole="ACCOUNT" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ACCOUNT" Relationship="AirlineTicketBookingModel.FK__MESSAGE__TexterI__6FE99F9F" FromRole="MESSAGE" ToRole="ACCOUNT" />
         </EntityType>
         <EntityType Name="Parameter">
           <Key>
@@ -657,7 +657,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MESSAGE__TexterI__52593CB8">
+        <Association Name="FK__MESSAGE__TexterI__6FE99F9F">
           <End Type="AirlineTicketBookingModel.ACCOUNT" Role="ACCOUNT" Multiplicity="0..1" />
           <End Type="AirlineTicketBookingModel.MESSAGE" Role="MESSAGE" Multiplicity="*" />
           <ReferentialConstraint>

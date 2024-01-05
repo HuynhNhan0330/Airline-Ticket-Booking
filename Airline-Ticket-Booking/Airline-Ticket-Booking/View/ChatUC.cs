@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Airline_Ticket_Booking
 {
@@ -31,6 +32,17 @@ namespace Airline_Ticket_Booking
                 this.Invalidate();
             }
         }
+
+        private DateTime? _timeGet = null;
+        public DateTime? timeGet
+        {
+            get { return _timeGet; }
+            set
+            {
+                _timeGet = value;
+            }
+        }
+
 
         private int _type = 0;
         public int type
@@ -102,6 +114,7 @@ namespace Airline_Ticket_Booking
             message.TexterID = Helper.getAccountCustomer().AccountID;
             message.RecipientID = "AC0001";
             message.Created = DateTime.Now;
+            timeGet = message.Created;
 
             (bool isGet, string label) = await MessageDAL.Ins.createMessage(message);
 
@@ -124,6 +137,7 @@ namespace Airline_Ticket_Booking
             message.TexterID = "AC0001";
             message.RecipientID = customerID;
             message.Created = DateTime.Now;
+            timeGet = message.Created;
 
             (bool isGet, string label) = await MessageDAL.Ins.createMessage(message);
 
@@ -172,6 +186,59 @@ namespace Airline_Ticket_Booking
                     addInMessage(message);
                 else
                     addOutMessage(message);
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (timeGet == null)
+                return;
+
+            // Load dữ liệu mới
+
+            updateMessage();
+        }
+
+        private async void updateMessage()
+        {
+            switch (type)
+            {
+                case 0:
+                    (bool isGetAdmin, List<MessageDTO> messagesAdmin, string labelAdmin) = await MessageDAL.Ins.getMessageByTime("AC0001", customerID, (DateTime)timeGet);
+
+                    if (isGetAdmin)
+                    {
+                        timeGet = DateTime.Now;
+
+                        foreach (MessageDTO message in messagesAdmin)
+                        {
+                            if (message.TexterID == "AC0001")
+                                addInMessage(message);
+                            else
+                                addOutMessage(message);
+                        }
+                    }
+
+                    break;
+
+                case 1:
+                    (bool isGetCustomer, List<MessageDTO> messagesCustomer, string labelCustomer) = await MessageDAL.Ins.getMessageByTime(Helper.getAccountCustomer().AccountID, "AC0001", (DateTime)timeGet);
+
+                    if (isGetCustomer)
+                    {
+                        timeGet = DateTime.Now;
+                        string texterID = Helper.getAccountCustomer().AccountID;
+
+                        foreach (MessageDTO message in messagesCustomer)
+                        {
+                            if (message.TexterID == texterID)
+                                addInMessage(message);
+                            else
+                                addOutMessage(message);
+                        }
+                    }
+
+                    break;
             }
         }
     }

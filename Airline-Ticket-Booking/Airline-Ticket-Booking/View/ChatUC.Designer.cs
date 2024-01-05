@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnTop = new System.Windows.Forms.Panel();
             this.lbName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pibSend = new System.Windows.Forms.PictureBox();
-            this.pnChat = new System.Windows.Forms.Panel();
             this.atxbText = new Airline_Ticket_Booking.AControls.ATextboxUC();
+            this.pnChat = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.pnTop.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibSend)).BeginInit();
@@ -84,16 +86,6 @@
             this.pibSend.TabStop = false;
             this.pibSend.Click += new System.EventHandler(this.pibSend_Click);
             // 
-            // pnChat
-            // 
-            this.pnChat.AutoScroll = true;
-            this.pnChat.BackColor = System.Drawing.Color.Transparent;
-            this.pnChat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnChat.Location = new System.Drawing.Point(0, 56);
-            this.pnChat.Name = "pnChat";
-            this.pnChat.Size = new System.Drawing.Size(500, 444);
-            this.pnChat.TabIndex = 2;
-            // 
             // atxbText
             // 
             this.atxbText.BackColor = System.Drawing.SystemColors.Window;
@@ -119,6 +111,22 @@
             this.atxbText.textAlign = Airline_Ticket_Booking.AControls.ATextboxUC.TextAlign.Left;
             this.atxbText.Texts = "";
             this.atxbText.UnderlinedStyle = false;
+            // 
+            // pnChat
+            // 
+            this.pnChat.AutoScroll = true;
+            this.pnChat.BackColor = System.Drawing.Color.Transparent;
+            this.pnChat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnChat.Location = new System.Drawing.Point(0, 56);
+            this.pnChat.Name = "pnChat";
+            this.pnChat.Size = new System.Drawing.Size(500, 444);
+            this.pnChat.TabIndex = 2;
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // ChatUC
             // 
@@ -147,5 +155,6 @@
         private System.Windows.Forms.PictureBox pibSend;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Panel pnChat;
+        private System.Windows.Forms.Timer timer;
     }
 }

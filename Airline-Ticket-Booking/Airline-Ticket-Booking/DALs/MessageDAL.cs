@@ -52,6 +52,33 @@ namespace Airline_Ticket_Booking.DALs
             }
         }
 
+        public async Task<(bool, List<MessageDTO>, string)> getMessageByTime(string texterID, string recipientID, DateTime timeGet)
+        {
+            try
+            {
+                using (var context = new AirlineTicketBookingEntities())
+                {
+                    var messList = (from messgae in context.MESSAGEs
+                                    where ((messgae.TexterID == texterID && recipientID == messgae.RecipientID) ||
+                                    (messgae.TexterID == recipientID && messgae.RecipientID == texterID)) && messgae.Created > timeGet
+                                    select new MessageDTO
+                                    {
+                                        TexterID = messgae.TexterID,
+                                        RecipientID = messgae.RecipientID,
+                                        Text = messgae.Text,
+                                        MessageID = messgae.MessageID,
+                                        Created = (DateTime)messgae.Created
+                                    }).ToListAsync();
+
+                    return (true, await messList, "Lấy danh sách tin nhắn thành công!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
+            }
+        }
+
         public async Task<(bool, string)> createMessage(MessageDTO message)
         {
             try

@@ -127,7 +127,7 @@ CREATE TABLE MESSAGE (
 	TexterID VARCHAR(20),
 	RecipientID VARCHAR (20),
 	Text NVARCHAR(255),
-	Created SMALLDATETIME
+	Created DATETIME
 )
 
 alter table MESSAGE add foreign key (TexterID) references ACCOUNT(AccountID)

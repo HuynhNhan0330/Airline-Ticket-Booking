@@ -88,13 +88,21 @@ namespace Airline_Ticket_Booking.Utils
         public static AccountDTO getAccountAdmin()
         {
             FormAdminHome form = Application.OpenForms.OfType<FormAdminHome>().FirstOrDefault();
-            return form.account;
+
+            if (form.account != null)
+                return form.account;
+            else
+                return new AccountDTO();
         }
 
         public static AccountDTO getAccountCustomer()
         {
             FormMainCustomerWindown form = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
-            return form.customer;
+
+            if (form.customer != null)
+                return form.customer;
+            else
+                return new AccountDTO();
         }
 
         public static bool AreImagesEqual(Image image1, Image image2)
