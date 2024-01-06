@@ -17,6 +17,7 @@ namespace Airline_Ticket_Booking.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TICKET_CLASS()
         {
+            this.FLIGHT_TICKET = new HashSet<FLIGHT_TICKET>();
             this.FLIGHT_TICKET_CLASS_DETAIL = new HashSet<FLIGHT_TICKET_CLASS_DETAIL>();
             this.SEATs = new HashSet<SEAT>();
         }
@@ -25,6 +26,8 @@ namespace Airline_Ticket_Booking.Model
         public string TicketClassName { get; set; }
         public int PricePercentage { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FLIGHT_TICKET> FLIGHT_TICKET { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FLIGHT_TICKET_CLASS_DETAIL> FLIGHT_TICKET_CLASS_DETAIL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

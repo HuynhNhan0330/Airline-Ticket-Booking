@@ -31,8 +31,6 @@ namespace Airline_Ticket_Booking.Usercontrols
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnSTT = new System.Windows.Forms.Panel();
-            this.lbSTT = new System.Windows.Forms.Label();
             this.pnMonth = new System.Windows.Forms.Panel();
             this.lbMonth = new System.Windows.Forms.Label();
             this.pnFlightCount = new System.Windows.Forms.Panel();
@@ -41,39 +39,17 @@ namespace Airline_Ticket_Booking.Usercontrols
             this.lbRevenue = new System.Windows.Forms.Label();
             this.pnRatio = new System.Windows.Forms.Panel();
             this.lbRatio = new System.Windows.Forms.Label();
-            this.pnSTT.SuspendLayout();
             this.pnMonth.SuspendLayout();
             this.pnFlightCount.SuspendLayout();
             this.pnRevenue.SuspendLayout();
             this.pnRatio.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnSTT
-            // 
-            this.pnSTT.Controls.Add(this.lbSTT);
-            this.pnSTT.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnSTT.Location = new System.Drawing.Point(0, 0);
-            this.pnSTT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnSTT.Name = "pnSTT";
-            this.pnSTT.Size = new System.Drawing.Size(100, 40);
-            this.pnSTT.TabIndex = 1;
-            // 
-            // lbSTT
-            // 
-            this.lbSTT.AutoSize = true;
-            this.lbSTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.lbSTT.ForeColor = System.Drawing.Color.Black;
-            this.lbSTT.Location = new System.Drawing.Point(40, 11);
-            this.lbSTT.Name = "lbSTT";
-            this.lbSTT.Size = new System.Drawing.Size(20, 22);
-            this.lbSTT.TabIndex = 0;
-            this.lbSTT.Text = "1";
-            // 
             // pnMonth
             // 
             this.pnMonth.Controls.Add(this.lbMonth);
             this.pnMonth.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnMonth.Location = new System.Drawing.Point(100, 0);
+            this.pnMonth.Location = new System.Drawing.Point(0, 0);
             this.pnMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnMonth.Name = "pnMonth";
             this.pnMonth.Size = new System.Drawing.Size(100, 40);
@@ -94,7 +70,7 @@ namespace Airline_Ticket_Booking.Usercontrols
             // 
             this.pnFlightCount.Controls.Add(this.lbFlightCount);
             this.pnFlightCount.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnFlightCount.Location = new System.Drawing.Point(200, 0);
+            this.pnFlightCount.Location = new System.Drawing.Point(100, 0);
             this.pnFlightCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnFlightCount.Name = "pnFlightCount";
             this.pnFlightCount.Size = new System.Drawing.Size(200, 40);
@@ -115,7 +91,7 @@ namespace Airline_Ticket_Booking.Usercontrols
             // 
             this.pnRevenue.Controls.Add(this.lbRevenue);
             this.pnRevenue.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnRevenue.Location = new System.Drawing.Point(400, 0);
+            this.pnRevenue.Location = new System.Drawing.Point(300, 0);
             this.pnRevenue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnRevenue.Name = "pnRevenue";
             this.pnRevenue.Size = new System.Drawing.Size(300, 40);
@@ -136,7 +112,7 @@ namespace Airline_Ticket_Booking.Usercontrols
             // 
             this.pnRatio.Controls.Add(this.lbRatio);
             this.pnRatio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnRatio.Location = new System.Drawing.Point(700, 0);
+            this.pnRatio.Location = new System.Drawing.Point(600, 0);
             this.pnRatio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnRatio.Name = "pnRatio";
             this.pnRatio.Size = new System.Drawing.Size(100, 40);
@@ -162,12 +138,9 @@ namespace Airline_Ticket_Booking.Usercontrols
             this.Controls.Add(this.pnRevenue);
             this.Controls.Add(this.pnFlightCount);
             this.Controls.Add(this.pnMonth);
-            this.Controls.Add(this.pnSTT);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ReportByYearItemUC";
-            this.Size = new System.Drawing.Size(800, 40);
-            this.pnSTT.ResumeLayout(false);
-            this.pnSTT.PerformLayout();
+            this.Size = new System.Drawing.Size(700, 40);
             this.pnMonth.ResumeLayout(false);
             this.pnMonth.PerformLayout();
             this.pnFlightCount.ResumeLayout(false);
@@ -181,9 +154,6 @@ namespace Airline_Ticket_Booking.Usercontrols
         }
 
         #endregion
-
-        private Panel pnSTT;
-        private Label lbSTT;
         private Panel pnMonth;
         private Label lbMonth;
         private Panel pnFlightCount;

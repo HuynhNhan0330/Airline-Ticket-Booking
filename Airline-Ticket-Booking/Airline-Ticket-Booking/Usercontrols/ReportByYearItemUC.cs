@@ -42,26 +42,21 @@ namespace Airline_Ticket_Booking.Usercontrols
 
         private void render()
         {
-            lbSTT.Text = stt.ToString();
             lbMonth.Text = darr.Month.ToString();
             lbFlightCount.Text = darr.FlightCount.ToString();
             lbRevenue.Text = Helper.FormatVNMoney(darr.Revenue);
             lbRatio.Text = darr.Ratio.ToString();
 
-            lbSTT.Left = (pnSTT.Width - lbSTT.Width) / 2;
             lbMonth.Left = (pnMonth.Width - lbMonth.Width) / 2;
             lbFlightCount.Left = (pnFlightCount.Width - lbFlightCount.Width) / 2;
             lbRevenue.Left = (pnRevenue.Width - lbRevenue.Width) / 2;
             lbRatio.Left = (pnRatio.Width - lbRatio.Width) / 2;
 
-            this.Height = Math.Max(this.Height, lbSTT.Height + 10 * 2);
             this.Height = Math.Max(this.Height, lbMonth.Height + 10 * 2);
             this.Height = Math.Max(this.Height, lbFlightCount.Height + 10 * 2);
             this.Height = Math.Max(this.Height, lbRevenue.Height + 10 * 2);
             this.Height = Math.Max(this.Height, lbRatio.Height + 10 * 2);
 
-            lbSTT.Top = (this.Height - lbSTT.Height) / 2;
-            lbSTT.Top = (this.Height - lbMonth.Height) / 2;
             lbFlightCount.Top = (this.Height - lbFlightCount.Height) / 2;
             lbRevenue.Top = (this.Height - lbRevenue.Height) / 2;
             lbRatio.Top = (this.Height - lbRatio.Height) / 2;

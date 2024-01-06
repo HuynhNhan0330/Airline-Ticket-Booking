@@ -127,6 +127,7 @@ namespace Airline_Ticket_Booking.DALs
                                                              Monthly = month,
                                                              FlightID = fl.FlightID,
                                                              FlightName = departureAirport.AirportName + " - " + arrivalAirport.AirportName,
+                                                             arrivalCity = departureAirport.CityName,
                                                              TicketSold = ticketDetails.Sum(ftcd => ftcd.TicketSold),
                                                              Revenue = ticketDetails.Sum(ftcd => ftcd.TicketSold * ftcd.Fare),
                                                          }).ToListAsync();

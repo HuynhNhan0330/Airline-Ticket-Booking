@@ -47,11 +47,39 @@ namespace Airline_Ticket_Booking
             lbTicket.Text = detailedMonthlyRevenueReports.Sum(dmrr => dmrr.TicketSold).ToString();
             totalRevenue = detailedMonthlyRevenueReports.Sum(dmrr => dmrr.Revenue);
             lbRevenue.Text = Helper.FormatVNMoney(totalRevenue);
+
+            loadChar();
         }
 
         private void ReportByMonthUC_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadChar()
+        {
+            Dictionary<string, int> cityCounts = new Dictionary<string, int>();
+
+            foreach (DetailedMonthlyRevenueReportDTO dmrr in detailedMonthlyRevenueReports)
+            {
+                string arrivalCity = dmrr.arrivalCity;
+
+                if (cityCounts.ContainsKey(arrivalCity))
+                    cityCounts[arrivalCity]++;
+                else
+                    cityCounts[arrivalCity] = 1;
+            }
+
+
+            int number = Math.Min(cityCounts.Count, 4);
+            cityCounts = cityCounts.OrderByDescending(r => r.Value).Take(number).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+            chartRevenue.Titles[0].Text = "Top " + number.ToString() + " địa điểm được đến nhất";
+            chartRevenue.DataSource = cityCounts;
+            chartRevenue.Series[0].XValueMember = "Key";
+            chartRevenue.Series[0].YValueMembers = "Value";
+            chartRevenue.DataBind();
+            chartRevenue.Update();
         }
 
         private void loadPanel()

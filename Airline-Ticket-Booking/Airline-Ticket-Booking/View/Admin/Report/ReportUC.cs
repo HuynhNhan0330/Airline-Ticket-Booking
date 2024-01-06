@@ -16,7 +16,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
+using Airline_Ticket_Booking.Model;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Airline_Ticket_Booking
 {
@@ -26,6 +28,7 @@ namespace Airline_Ticket_Booking
         {
             InitializeComponent();
             cbTypeReport.SelectedIndex = 0;
+            cbQuy.SelectedIndex = 0;
         }
 
         private void loadBody(UserControl uc)
@@ -41,10 +44,12 @@ namespace Airline_Ticket_Booking
                 case 0:
                     loadBody(new ReportByMonthUC());
                     adtpTime.CustomFormat = "MM/yyyy";
+                    cbQuy.Visible = false;
                     break;
                 case 1:
                     loadBody(new ReportByYearUC());
                     adtpTime.CustomFormat = "yyyy";
+                    cbQuy.Visible = true;
                     break;
             }
 
@@ -69,29 +74,7 @@ namespace Airline_Ticket_Booking
 
         private async void loadReportByMonth()
         {
-            // Xem đã có chi tiết báo cáo năm của tháng này chưa
-            DetailedAnnualRevenueReportDTO findDetailedAnnualRevenueReport = await DetailedAnnualRevenueReportDAL.Ins.find(adtpTime.Value.Year, adtpTime.Value.Month);
-
-            List<DetailedMonthlyRevenueReportDTO> listReportByMonthDetail = null;
-
-            // Không tồn tại
-            if (findDetailedAnnualRevenueReport == null)
-            {
-                listReportByMonthDetail = await calculateMonth(adtpTime.Value.Month, adtpTime.Value.Year);
-            }
-            else
-            {
-                (bool isGet, List< DetailedMonthlyRevenueReportDTO> x, string label) = await DetailedMonthlyRevenueReportDAL.Ins.getListDetailedMonthlyRevenueReport(adtpTime.Value.Month, adtpTime.Value.Year);
-                if (isGet)
-                {
-                    listReportByMonthDetail = new List<DetailedMonthlyRevenueReportDTO>(x);
-                }
-                else
-                {
-                    AMessageBoxFrm ms = new AMessageBoxFrm(label, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ms.ShowDialog();
-                }
-            }
+            List<DetailedMonthlyRevenueReportDTO> listReportByMonthDetail = await calculateMonth(adtpTime.Value.Month, adtpTime.Value.Year);
 
             ReportByMonthUC uc = pnBodyReport.Controls[0] as ReportByMonthUC;
             uc.loadData(listReportByMonthDetail);
@@ -113,38 +96,6 @@ namespace Airline_Ticket_Booking
                 foreach (DetailedMonthlyRevenueReportDTO dmrr in detailedMonthlyRevenueReports)
                     dmrr.Ratio = Math.Round(dmrr.Revenue * 100 / totalRevenue, 2);
 
-                // Kiểm tra điều kiên phù hợp sẽ lưu lên cơ sở dữ liệu của mình
-                // Trên bảng chi tiết báo cáo tháng (Detailed Monthly Revenue Report)
-                if (month < DateTime.Now.Month && year <= DateTime.Now.Year && detailedMonthlyRevenueReports.Count > 0)
-                {
-                    // Tạo chi tiết báo cáo theo năm
-                    DetailedAnnualRevenueReportDTO detailedAnnualRevenueReport = new DetailedAnnualRevenueReportDTO();
-                    detailedAnnualRevenueReport.Year = year;
-                    detailedAnnualRevenueReport.Month = month;
-                    detailedAnnualRevenueReport.Revenue = totalRevenue;
-                    detailedAnnualRevenueReport.FlightCount = detailedMonthlyRevenueReports.Count();
-
-                    (bool isCreateDetailedAnnualRevenueReport, string label) = await DetailedAnnualRevenueReportDAL.Ins.createDetailedAnnualRevenueReport(detailedAnnualRevenueReport);
-
-                    if (isCreateDetailedAnnualRevenueReport)
-                    {
-                        // Lưu danh sách báo cáo chi tiết theo tháng
-                        (bool isCreateDetailMonthlyRevenueReport, string label1) = await DetailedMonthlyRevenueReportDAL.Ins.createDetailedMonthlyRevenueReport(detailedMonthlyRevenueReports);
-
-                        if (!isCreateDetailMonthlyRevenueReport)
-                        {
-                            AMessageBoxFrm ms = new AMessageBoxFrm(label1, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            ms.ShowDialog();
-                        }
-                    }
-                    else
-                    {
-                        AMessageBoxFrm ms = new AMessageBoxFrm(label, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ms.ShowDialog();
-                    }
-
-                }
-
                 // Hiển thị lên view
                 return detailedMonthlyRevenueReports;
             }
@@ -161,25 +112,21 @@ namespace Airline_Ticket_Booking
             for (int month = 1; month <= 12; ++month)
             {
                 // Kiểm tra tháng này đã tồn tại chưa
-                DetailedAnnualRevenueReportDTO findDetailedAnnualRevenueReport = await DetailedAnnualRevenueReportDAL.Ins.find(year, month);
+                DetailedAnnualRevenueReportDTO findDetailedAnnualRevenueReport = null;
 
-                // Chưa có tồn tại báo cáo tháng đó
-                if (findDetailedAnnualRevenueReport == null)
+                List<DetailedMonthlyRevenueReportDTO> detailedMonthlyRevenueReports = await calculateMonth(month, year);
+
+                if (detailedMonthlyRevenueReports.Count > 0)
                 {
-                    List <DetailedMonthlyRevenueReportDTO> detailedMonthlyRevenueReports = await calculateMonth(month, year);
+                    DetailedAnnualRevenueReportDTO detailedAnnualRevenueReport = new DetailedAnnualRevenueReportDTO();
+                    detailedAnnualRevenueReport.Year = year;
+                    detailedAnnualRevenueReport.Month = month;
+                    detailedAnnualRevenueReport.Revenue = detailedMonthlyRevenueReports.Sum(dmrr => dmrr.Revenue);
+                    detailedAnnualRevenueReport.FlightCount = detailedMonthlyRevenueReports.Count();
 
-                    if (detailedMonthlyRevenueReports.Count > 0)
-                    {
-                        DetailedAnnualRevenueReportDTO detailedAnnualRevenueReport = new DetailedAnnualRevenueReportDTO();
-                        detailedAnnualRevenueReport.Year = year;
-                        detailedAnnualRevenueReport.Month = month;
-                        detailedAnnualRevenueReport.Revenue = detailedMonthlyRevenueReports.Sum(dmrr => dmrr.Revenue);
-                        detailedAnnualRevenueReport.FlightCount = detailedMonthlyRevenueReports.Count();
-
-                        findDetailedAnnualRevenueReport = detailedAnnualRevenueReport;
-                    }
+                    findDetailedAnnualRevenueReport = detailedAnnualRevenueReport;
                 }
-                
+
                 if (findDetailedAnnualRevenueReport != null)
                     ListAnnualRevenueReport.Add(findDetailedAnnualRevenueReport);
             }
@@ -189,49 +136,12 @@ namespace Airline_Ticket_Booking
             foreach (var darr in ListAnnualRevenueReport) 
                 darr.Ratio = Math.Round(darr.Revenue * 100 / totalRevenue, 2);
 
-            // Lưu lại báo cáo năm
-            if (year < DateTime.Now.Year)
-            {
-                //Lưu báo cáo năm
-                AnnualRevenueReportDTO annualRevenueReport = new AnnualRevenueReportDTO();
-                annualRevenueReport.Years = year;
-                annualRevenueReport.TotalRevenue = totalRevenue;
-
-                (bool isCreate, string label) = await AnnualRevenueReportDAL.Ins.createAnnualRevenueReport(annualRevenueReport);
-
-                // Cập nhật ratio
-                await DetailedAnnualRevenueReportDAL.Ins.update(ListAnnualRevenueReport);
-            }
-
             return ListAnnualRevenueReport;
         }
 
         private async void loadReportByYear()
         {
-            // Xem đã có báo cáo năm này chưa
-            AnnualRevenueReportDTO findAnnualRevenueReport = await AnnualRevenueReportDAL.Ins.find(adtpTime.Value.Year);
-
-
-            List<DetailedAnnualRevenueReportDTO> listReportByYearDetail = null;
-
-            // Không tồn tại báo cáo năm
-            if (findAnnualRevenueReport == null)
-            {
-                listReportByYearDetail = await calculateYear(adtpTime.Value.Year);
-            }
-            else
-            {
-                (bool isGet, List<DetailedAnnualRevenueReportDTO> x, string label) = await DetailedAnnualRevenueReportDAL.Ins.getListDetailedAnnualRevenueReport(adtpTime.Value.Year);
-                if (isGet)
-                {
-                    listReportByYearDetail = new List<DetailedAnnualRevenueReportDTO>(x);
-                }
-                else
-                {
-                    AMessageBoxFrm ms = new AMessageBoxFrm(label, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ms.ShowDialog();
-                }
-            }
+            List<DetailedAnnualRevenueReportDTO> listReportByYearDetail = await calculateYear(adtpTime.Value.Year);
 
             ReportByYearUC uc = pnBodyReport.Controls[0] as ReportByYearUC;
             uc.loadData(listReportByYearDetail);
@@ -311,31 +221,113 @@ namespace Airline_Ticket_Booking
                 message.From = new MailAddress(email);
                 message.To.Add(atxbEmail.Texts.Trim());
                 message.Subject = "Báo cáo ";
-                if (cbTypeReport.SelectedIndex == 0)
-                    message.Subject += "tháng " + adtpTime.Value.Month + "/" + adtpTime.Value.Year;
-                else
-                    message.Subject += "năm " + adtpTime.Value.Year;
-                // Tạo ngẫu nhiên
-                message.Body = message.Subject + ":";
 
+                switch (cbTypeReport.SelectedIndex)
+                {
+                    // Xử lý trên tháng
+                    case 0:
+                        message.Subject += "tháng " + adtpTime.Value.Month + "/" + adtpTime.Value.Year;
+                        ReportByMonthUC ucReportMonth = pnBodyReport.Controls[0] as ReportByMonthUC;
+
+                        StringBuilder tableMonthHTML = new StringBuilder();
+
+                        bool isEvenYear = false;
+
+                        foreach (DetailedMonthlyRevenueReportDTO mrr in ucReportMonth.detailedMonthlyRevenueReports)
+                        {
+                            if (isEvenYear)
+                                tableMonthHTML.Append("<tr style=\"background-color: #f3f3f3;\">");
+                            else
+                                tableMonthHTML.Append("<tr style=\"border-bottom: 1px solid #dddddd;\">");
+
+                            isEvenYear = !isEvenYear;
+
+                            tableMonthHTML.Append("<td style=\"padding: 12px 15px;\">" + mrr.FlightName + "</td>");
+                            tableMonthHTML.Append("<td style=\"padding: 12px 15px;\">" + mrr.TicketSold + "</td>");
+                            tableMonthHTML.Append("<td style=\"padding: 12px 15px;\">" + mrr.Revenue + "</td>");
+                            tableMonthHTML.Append("<td style=\"padding: 12px 15px;\">" + mrr.Ratio + "</td>");
+                            tableMonthHTML.Append("</tr>");
+                        }
+
+                        String urlRevenueMonth = CloudinaryAPI.UploadChartImageAndGetPublicUrl(ucReportMonth.chartRevenue);
+
+                        String HTMLMonth = System.IO.File.ReadAllText(@"../../HTML/TemplateEmailReportMonth.txt")
+                                    .Replace("{TABLE_CONTENT}", tableMonthHTML.ToString())
+                                    .Replace("{UrlRevenue}", urlRevenueMonth);
+                        message.Body = HTMLMonth;
+                        break;
+
+                    // Xử lý trên năm
+                    case 1:
+                        message.Subject += "năm " + adtpTime.Value.Year;
+                        ReportByYearUC ucReportYear = pnBodyReport.Controls[0] as ReportByYearUC;
+
+                        StringBuilder tableYearHTML = new StringBuilder();
+
+                        bool isEven = false;
+
+                        foreach (DetailedAnnualRevenueReportDTO arr in ucReportYear.detailAnnualRevenueReport)
+                        {
+                            if (isEven) 
+                                tableYearHTML.Append("<tr style=\"background-color: #f3f3f3;\">");
+                            else
+                                tableYearHTML.Append("<tr style=\"border-bottom: 1px solid #dddddd;\">");
+
+                            isEven = !isEven;
+
+                            tableYearHTML.Append("<td style=\"padding: 12px 15px;\">" + arr.Month + "</td>");
+                            tableYearHTML.Append("<td style=\"padding: 12px 15px;\">" + arr.FlightCount + "</td>");
+                            tableYearHTML.Append("<td style=\"padding: 12px 15px;\">" + arr.Revenue + "</td>");
+                            tableYearHTML.Append("<td style=\"padding: 12px 15px;\">" + arr.Ratio + "</td>");
+                            tableYearHTML.Append("</tr>");
+                        }
+
+                        String urlRevenue = CloudinaryAPI.UploadChartImageAndGetPublicUrl(ucReportYear.chartRevenue); 
+                        String urlChartReportByYear = CloudinaryAPI.UploadChartImageAndGetPublicUrl(ucReportYear.chartReportByYear);
+
+
+                        String HTMLYear = System.IO.File.ReadAllText(@"../../HTML/TemplateEmailReportYear.txt")
+                                    .Replace("{TABLE_CONTENT}", tableYearHTML.ToString())
+                                    .Replace("{UrlRevenue}", urlRevenue)
+                                    .Replace("{UrlChartReportByYear}", urlChartReportByYear);
+
+                        message.Body = HTMLYear;
+
+                        break;
+                }
+
+
+                message.IsBodyHtml = true;
+                
                 // Tạo đối tượng SmtpClient và cấu hình thông tin SMTP của Gmail
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                 smtpClient.EnableSsl = true;
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.Credentials = new NetworkCredential(email, password);
-                Attachment attachment = new Attachment(exportExcel());
-                message.Attachments.Add(attachment);
+                
                 try
                 {
                     // Gửi email
                     smtpClient.Send(message);
+
+                    AMessageBoxFrm ms = new AMessageBoxFrm("Gửi báo cáo qua email thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ms.ShowDialog();
                 }
                 catch (Exception ex)
                 {
                     AMessageBoxFrm ms = new AMessageBoxFrm(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ms.ShowDialog();
                 }
+            }
+        }
+
+        private void cbQuy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pnBodyReport.Controls[0] is ReportByYearUC)
+            {
+                ReportByYearUC uc = pnBodyReport.Controls[0] as ReportByYearUC;
+                uc.loadQuy(cbQuy.SelectedIndex);
             }
         }
     }

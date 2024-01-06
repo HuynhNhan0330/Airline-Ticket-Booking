@@ -1,4 +1,5 @@
 ﻿using Airline_Ticket_Booking.DTOs;
+using Airline_Ticket_Booking.Model;
 using Airline_Ticket_Booking.Usercontrols;
 using Airline_Ticket_Booking.Utils;
 using System;
@@ -26,6 +27,8 @@ namespace Airline_Ticket_Booking
             }
         }
 
+        private List<DetailedAnnualRevenueReportDTO> __detailAnnualRevenueReport;
+
         private decimal _totalRevenue;
         public decimal totalRevenue
         {
@@ -49,6 +52,13 @@ namespace Airline_Ticket_Booking
         public void loadData(List<DetailedAnnualRevenueReportDTO> detailAnnualRevenueReport)
         {
             this.detailAnnualRevenueReport = new List<DetailedAnnualRevenueReportDTO>(detailAnnualRevenueReport);
+            this.__detailAnnualRevenueReport = new List<DetailedAnnualRevenueReportDTO>(detailAnnualRevenueReport);
+
+            loadDataNew();
+        }
+
+        private void loadDataNew()
+        {
             loadPanel();
 
             lbFlightCount.Text = detailAnnualRevenueReport.Sum(darr => darr.FlightCount).ToString();
@@ -81,13 +91,45 @@ namespace Airline_Ticket_Booking
             }
         }
 
+        public void loadQuy(int quy)
+        {
+            if (quy == 0)
+            {
+                detailAnnualRevenueReport = new List<DetailedAnnualRevenueReportDTO>(__detailAnnualRevenueReport);
+
+                loadDataNew();
+            }
+            else
+            {
+                detailAnnualRevenueReport.Clear();
+
+                for (int i = 0; i < __detailAnnualRevenueReport.Count; ++i)
+                    if ((quy - 1) * 3 + 1 <= __detailAnnualRevenueReport[i].Month && __detailAnnualRevenueReport[i].Month <= quy * 3)
+                        detailAnnualRevenueReport.Add(__detailAnnualRevenueReport[i]);
+
+                loadDataNew();
+            }
+        }
+
         public void loadChart()
         {
-            chartReportByYear.DataSource = detailAnnualRevenueReport;
+            List<DetailedAnnualRevenueReportDTO> filteredList = detailAnnualRevenueReport;
+
+            int number = Math.Min(filteredList.Count, 3);
+            filteredList = filteredList.OrderByDescending(r => r.Revenue).Take(number).ToList();
+
+            chartReportByYear.Titles[0].Text = "Top " + number.ToString() + " tháng có doanh thu cao nhất";
+            chartReportByYear.DataSource = filteredList;
             chartReportByYear.Series[0].XValueMember = "Month";
             chartReportByYear.Series[0].YValueMembers = "Ratio";
             chartReportByYear.DataBind();
             chartReportByYear.Update();
+
+            chartRevenue.DataSource = detailAnnualRevenueReport;
+            chartRevenue.Series[0].XValueMember = "Month";
+            chartRevenue.Series[0].YValueMembers = "Revenue";
+            chartRevenue.DataBind();
+            chartRevenue.Update();
         }
     }
 }

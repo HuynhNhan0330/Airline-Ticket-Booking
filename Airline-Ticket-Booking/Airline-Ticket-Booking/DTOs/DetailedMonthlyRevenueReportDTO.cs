@@ -17,5 +17,6 @@ namespace Airline_Ticket_Booking.DTOs
         public int TicketSold { get; set; }
         public decimal Revenue { get; set; }
         public decimal Ratio { get; set; }
+        public string arrivalCity { get; set; }
     }
 }

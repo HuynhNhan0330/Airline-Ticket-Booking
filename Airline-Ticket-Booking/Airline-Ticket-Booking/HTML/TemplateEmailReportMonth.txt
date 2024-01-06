@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #03045E;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+</style>
+
+<body>
+    <table align="center" class="body-wrap"
+        style="background: #e0f2f2 url() repeat center; box-sizing: border-box; font-family: Helvetica, Trebuchet MS, sans-serif; mso-line-height-rule: exactly; width: 100%; word-break: break-word"
+        bgcolor="#e0f2f2" background="url()">
+        <tbody>
+            <tr style="  margin: 0; ; padding: 0">
+                <td align="center" style="  margin: 0 auto; padding: 0; vertical-align: top" valign="top">
+                    <table style="padding-bottom: 35px;">
+                        <tbody>
+                            <tr>
+                                <td class="container" width="600"
+                                    style=" clear: both !important; display: block !important;  margin: 0 auto; max-width: 600px !important; padding: 0; vertical-align: top"
+                                    valign="top">
+                                    <div class="content"
+                                        style=" display: block;  margin: 0 auto; max-width: 600px; padding: 0">
+                                        <table class="main" width="100%" cellpadding="0" cellspacing="0"
+                                            style="background: #FFFFFF; margin: 0px 0 0; padding: 0" bgcolor="#FFFFFF">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="aligncenter"
+                                                        style="  margin: 0 auto; padding: 0; text-align: center; vertical-align: top"
+                                                        align="center" valign="top">
+                                                        <div align="center">
+                                                            <img width="600"
+                                                                src="https://res.cloudinary.com/dclzpc4gd/image/upload/v1704472696/Airline/std9ulrsupbiqwhfqhlf.png"
+                                                                alt=""
+                                                                style=" display: block;  margin: 0; max-width: 100%; padding: 0">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="content-wrap"
+                                                        style="margin: 0 auto; 
+                                                                padding: 0 20px; 
+                                                                vertical-align: top; "
+                                                        valign="top">
+                                                        <table style="border-collapse: collapse;
+                                                                    margin: 25px 0;
+                                                                    font-size: 0.9em;
+                                                                    font-family: sans-serif;
+                                                                    min-width: 400px;
+                                                                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);">
+                                                            <thead>
+                                                                <tr style="background-color: #03045E; color: #ffffff; text-align: left;">
+                                                                    <th style="padding: 12px 15px;">Chuyến bay</th>
+                                                                    <th style="padding: 12px 15px;">Số vé</th>
+                                                                    <th style="padding: 12px 15px;">Doanh thu</th>
+                                                                    <th style="padding: 12px 15px;">Tỷ lệ</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {TABLE_CONTENT}
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="aligncenter"
+                                                        style="  margin: 0 auto; padding: 0; text-align: center; vertical-align: top"
+                                                        align="center" valign="top">
+                                                        <div align="center">
+                                                            <img width="600"
+                                                                src="{UrlRevenue}"
+                                                                alt=""
+                                                                style=" display: block;  margin: 0; max-width: 100%; padding: 0">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="aligncenter mailer-info"
+                                                        style="background: #F5F5F5; border-top-color: #DBDADA; border-top-style: solid; border-top-width: 1px;  color: #575454;  font-size: 12px; font-weight: normal; line-height: 1.7; margin: 0 auto; padding: 15px 20px 20px; text-align: center; vertical-align: top"
+                                                        align="center" bgcolor="#F5F5F5" valign="top">
+                                                        <h2 class="wysiwyg-text-align-center"
+                                                            style=" color: #2e2e2e; font-family: Georgia, serif; font-size: 18px; font-weight: bold; line-height: 1.7; text-align: center !important"
+                                                            align="center"><span style=" color: #0c70b6"> AirportVN
+                                                            </span></h2>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

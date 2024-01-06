@@ -27,5 +27,6 @@ namespace Airline_Ticket_Booking.Model
         public string AccountID { get; set; }
     
         public virtual FLIGHT FLIGHT { get; set; }
+        public virtual TICKET_CLASS TICKET_CLASS { get; set; }
     }
 }

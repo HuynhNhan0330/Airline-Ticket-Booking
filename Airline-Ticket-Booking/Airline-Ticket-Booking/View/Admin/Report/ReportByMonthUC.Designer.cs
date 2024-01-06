@@ -31,6 +31,10 @@ namespace Airline_Ticket_Booking
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +60,7 @@ namespace Airline_Ticket_Booking
             this.lbFlightCount = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pnReportByMonth = new System.Windows.Forms.Panel();
+            this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnHeader.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -69,6 +74,7 @@ namespace Airline_Ticket_Booking
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -78,7 +84,7 @@ namespace Airline_Ticket_Booking
             this.pnHeader.Controls.Add(this.panel5);
             this.pnHeader.Controls.Add(this.panel3);
             this.pnHeader.Controls.Add(this.panel2);
-            this.pnHeader.Location = new System.Drawing.Point(50, 120);
+            this.pnHeader.Location = new System.Drawing.Point(50, 425);
             this.pnHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnHeader.Name = "pnHeader";
             this.pnHeader.Size = new System.Drawing.Size(1400, 40);
@@ -333,17 +339,45 @@ namespace Airline_Ticket_Booking
             // pnReportByMonth
             // 
             this.pnReportByMonth.AutoScroll = true;
-            this.pnReportByMonth.Location = new System.Drawing.Point(50, 160);
+            this.pnReportByMonth.Location = new System.Drawing.Point(50, 465);
             this.pnReportByMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnReportByMonth.Name = "pnReportByMonth";
-            this.pnReportByMonth.Size = new System.Drawing.Size(1400, 505);
+            this.pnReportByMonth.Size = new System.Drawing.Size(1400, 195);
             this.pnReportByMonth.TabIndex = 2;
+            // 
+            // chartRevenue
+            // 
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.MajorGrid.LineWidth = 0;
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend1);
+            this.chartRevenue.Location = new System.Drawing.Point(50, 125);
+            this.chartRevenue.Name = "chartRevenue";
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(138)))), ((int)(((byte)(184)))));
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Số lần";
+            this.chartRevenue.Series.Add(series1);
+            this.chartRevenue.Size = new System.Drawing.Size(1400, 275);
+            this.chartRevenue.TabIndex = 9;
+            title1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            title1.Name = "Title1";
+            title1.Text = "Top 5 địa điểm được đến nhất";
+            this.chartRevenue.Titles.Add(title1);
             // 
             // ReportByMonthUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Controls.Add(this.chartRevenue);
             this.Controls.Add(this.pnReportByMonth);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnHeader);
@@ -372,6 +406,7 @@ namespace Airline_Ticket_Booking
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -403,5 +438,6 @@ namespace Airline_Ticket_Booking
         private Label lbTicket;
         private Label label8;
         private Panel pnReportByMonth;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
     }
 }

@@ -19,8 +19,8 @@ namespace Airline_Ticket_Booking.Model
         {
             this.DETAILED_MONTHLY_REVENUE_REPORT = new HashSet<DETAILED_MONTHLY_REVENUE_REPORT>();
             this.FLIGHT_DETAIL = new HashSet<FLIGHT_DETAIL>();
-            this.FLIGHT_TICKET_CLASS_DETAIL = new HashSet<FLIGHT_TICKET_CLASS_DETAIL>();
             this.FLIGHT_TICKET = new HashSet<FLIGHT_TICKET>();
+            this.FLIGHT_TICKET_CLASS_DETAIL = new HashSet<FLIGHT_TICKET_CLASS_DETAIL>();
         }
     
         public string FlightID { get; set; }
@@ -39,8 +39,8 @@ namespace Airline_Ticket_Booking.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FLIGHT_DETAIL> FLIGHT_DETAIL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FLIGHT_TICKET_CLASS_DETAIL> FLIGHT_TICKET_CLASS_DETAIL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FLIGHT_TICKET> FLIGHT_TICKET { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FLIGHT_TICKET_CLASS_DETAIL> FLIGHT_TICKET_CLASS_DETAIL { get; set; }
     }
 }
