@@ -67,6 +67,7 @@
 ### 3. Đối tượng sử dụng
 * Nhà quản lý.
 * Nhân viên bán vé chuyến bay.
+* Khách hàng có nhu cầu mua vé.
 
 <div id="Muctieu"></div>
 
@@ -88,7 +89,8 @@
 * Lập báo cáo năm: Hệ thống có thể quản lý Báo cáo doanh thu năm, bao gồm các thông tin: Tháng, Số chuyến bay, Số vé, Doanh thu, Tỉ lệ, truy vấn và thống kê doanh số, số lượng chuyến bay của từng tháng theo năm và in báo cáo.
 * Thay đổi quy định: Được thay đổi ràng buộc về số lượng, phạm vi giới hạn, Thay đổi quy định về số lượng sân bay: Thay đổi số lượng sân bay, thay đổi quy định về thời gian bay tối thiểu: Thay đổi thời gian bay tối thiểu, thay đổi quy định về số sân bay trung gian tối đa: Thay đổi số lượng sân bay trung gian tối đa, thay đổi quy định về thời gian dừng tối thiểu tại các sân bay trung gian: Thay đổi thời gian dừng tối thiểu tại các sân bay trung gian, thay đổi quy định về thời gian dừng tối đa tại các sân bay trung gian: Thay đổi thời gian dừng tối đa tại các sân bay trung gian, thay đổi quy định về số lượng các hạng vé: Thay đổi số lượng các hạng vé, thay đổi quy định về thời gian chậm nhất khi đặt vé: Thay đổi thời gian chậm nhất khi đặt vé, thay đổi quy định về thời gian hủy đặt vé: Thay đổi thời gian hủy đặt vé.
 * Phân quyền đăng nhập: Hệ thống quản lý các tài khoản với các vai trò khác nhau để đảm bảo tính bảo mật.
-* 
+* Đăng nhập dưới vai trò khách hàng để đặt vé trước.
+
 <!-- TÁC GIẢ -->
 <div id="Tacgia"></div>
 
