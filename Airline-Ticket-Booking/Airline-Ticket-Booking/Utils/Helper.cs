@@ -99,10 +99,13 @@ namespace Airline_Ticket_Booking.Utils
         {
             FormMainCustomerWindown form = Application.OpenForms.OfType<FormMainCustomerWindown>().FirstOrDefault();
 
-            if (form.customer != null)
-                return form.customer;
-            else
-                return new AccountDTO();
+            if (form != null)
+                if (form.customer != null)
+                    return form.customer;
+                else
+                    return new AccountDTO();
+
+            return new AccountDTO();
         }
 
         public static bool AreImagesEqual(Image image1, Image image2)

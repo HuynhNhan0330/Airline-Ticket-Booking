@@ -93,8 +93,9 @@ namespace Airline_Ticket_Booking
                 decimal totalRevenue = detailedMonthlyRevenueReports.Sum(dmrr => dmrr.Revenue);
 
                 // Tính tỉ lệ cho chi tiết báo cáo tháng
-                foreach (DetailedMonthlyRevenueReportDTO dmrr in detailedMonthlyRevenueReports)
-                    dmrr.Ratio = Math.Round(dmrr.Revenue * 100 / totalRevenue, 2);
+                if (totalRevenue > 0)
+                    foreach (DetailedMonthlyRevenueReportDTO dmrr in detailedMonthlyRevenueReports)
+                        dmrr.Ratio = Math.Round(dmrr.Revenue * 100 / totalRevenue, 2);
 
                 // Hiển thị lên view
                 return detailedMonthlyRevenueReports;
@@ -133,8 +134,9 @@ namespace Airline_Ticket_Booking
 
             decimal totalRevenue = ListAnnualRevenueReport.Sum(darr => darr.Revenue);
 
-            foreach (var darr in ListAnnualRevenueReport) 
-                darr.Ratio = Math.Round(darr.Revenue * 100 / totalRevenue, 2);
+            if (totalRevenue > 0)
+                foreach (var darr in ListAnnualRevenueReport) 
+                    darr.Ratio = Math.Round(darr.Revenue * 100 / totalRevenue, 2);
 
             return ListAnnualRevenueReport;
         }

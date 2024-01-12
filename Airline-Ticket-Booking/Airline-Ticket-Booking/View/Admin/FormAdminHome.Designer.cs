@@ -30,6 +30,7 @@
         {
             this.pnTop = new System.Windows.Forms.Panel();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.abtnContact = new Airline_Ticket_Booking.AControls.AButton();
             this.abtnSetting = new Airline_Ticket_Booking.AControls.AButton();
             this.abtnAccountAndPermission = new Airline_Ticket_Booking.AControls.AButton();
             this.abtnPlane = new Airline_Ticket_Booking.AControls.AButton();
@@ -39,7 +40,6 @@
             this.pcbClose = new System.Windows.Forms.PictureBox();
             this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.pnBody = new System.Windows.Forms.Panel();
-            this.abtnContact = new Airline_Ticket_Booking.AControls.AButton();
             this.pnTop.SuspendLayout();
             this.pnMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbClose)).BeginInit();
@@ -72,6 +72,30 @@
             this.pnMenu.Name = "pnMenu";
             this.pnMenu.Size = new System.Drawing.Size(1133, 48);
             this.pnMenu.TabIndex = 3;
+            // 
+            // abtnContact
+            // 
+            this.abtnContact.BackColor = System.Drawing.Color.Transparent;
+            this.abtnContact.BackgroundColor = System.Drawing.Color.Transparent;
+            this.abtnContact.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
+            this.abtnContact.BorderRadius = 0;
+            this.abtnContact.BorderSize = 0;
+            this.abtnContact.Dock = System.Windows.Forms.DockStyle.Left;
+            this.abtnContact.FlatAppearance.BorderSize = 0;
+            this.abtnContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.abtnContact.Font = new System.Drawing.Font("Arial", 12F);
+            this.abtnContact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
+            this.abtnContact.LineType = Airline_Ticket_Booking.AControls.AButton.LineStyles.None;
+            this.abtnContact.Location = new System.Drawing.Point(975, 0);
+            this.abtnContact.Name = "abtnContact";
+            this.abtnContact.RoundType = Airline_Ticket_Booking.AControls.AButton.RoundStyles.Full;
+            this.abtnContact.Size = new System.Drawing.Size(150, 48);
+            this.abtnContact.TabIndex = 10;
+            this.abtnContact.Text = "Liên hệ";
+            this.abtnContact.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
+            this.abtnContact.ThinknessLine = 5;
+            this.abtnContact.UseVisualStyleBackColor = false;
+            this.abtnContact.Click += new System.EventHandler(this.abtnContact_Click);
             // 
             // abtnSetting
             // 
@@ -143,7 +167,6 @@
             this.abtnPlane.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
             this.abtnPlane.ThinknessLine = 5;
             this.abtnPlane.UseVisualStyleBackColor = false;
-            this.abtnPlane.Visible = false;
             this.abtnPlane.Click += new System.EventHandler(this.abtnPlane_Click);
             // 
             // abtnReport
@@ -248,30 +271,6 @@
             this.pnBody.Name = "pnBody";
             this.pnBody.Size = new System.Drawing.Size(1500, 750);
             this.pnBody.TabIndex = 3;
-            // 
-            // abtnContact
-            // 
-            this.abtnContact.BackColor = System.Drawing.Color.Transparent;
-            this.abtnContact.BackgroundColor = System.Drawing.Color.Transparent;
-            this.abtnContact.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
-            this.abtnContact.BorderRadius = 0;
-            this.abtnContact.BorderSize = 0;
-            this.abtnContact.Dock = System.Windows.Forms.DockStyle.Left;
-            this.abtnContact.FlatAppearance.BorderSize = 0;
-            this.abtnContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abtnContact.Font = new System.Drawing.Font("Arial", 12F);
-            this.abtnContact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
-            this.abtnContact.LineType = Airline_Ticket_Booking.AControls.AButton.LineStyles.None;
-            this.abtnContact.Location = new System.Drawing.Point(975, 0);
-            this.abtnContact.Name = "abtnContact";
-            this.abtnContact.RoundType = Airline_Ticket_Booking.AControls.AButton.RoundStyles.Full;
-            this.abtnContact.Size = new System.Drawing.Size(150, 48);
-            this.abtnContact.TabIndex = 10;
-            this.abtnContact.Text = "Liên hệ";
-            this.abtnContact.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(124)))));
-            this.abtnContact.ThinknessLine = 5;
-            this.abtnContact.UseVisualStyleBackColor = false;
-            this.abtnContact.Click += new System.EventHandler(this.abtnContact_Click);
             // 
             // FormAdminHome
             // 

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.flpnListContact = new System.Windows.Forms.FlowLayoutPanel();
             this.abtnSearch = new Airline_Ticket_Booking.AControls.AButton();
             this.atxbNameCustomer = new Airline_Ticket_Booking.AControls.ATextboxUC();
             this.chatUC1 = new Airline_Ticket_Booking.ChatUC();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -112,7 +114,14 @@
             this.chatUC1.Name = "chatUC1";
             this.chatUC1.Size = new System.Drawing.Size(500, 550);
             this.chatUC1.TabIndex = 4;
+            this.chatUC1.timeGet = null;
             this.chatUC1.type = 0;
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // ContactUC
             // 
@@ -139,5 +148,6 @@
         private AControls.AButton abtnSearch;
         private System.Windows.Forms.FlowLayoutPanel flpnListContact;
         private ChatUC chatUC1;
+        private System.Windows.Forms.Timer timer;
     }
 }

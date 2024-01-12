@@ -69,6 +69,7 @@ namespace Airline_Ticket_Booking
             chatUC1.Visible = true;
             chatUC1.name = contact.Name;
             chatUC1.customerID = contact.AccountID;
+            chatUC1.timeGet = DateTime.Now;
             loadMessage(contact);
         }
 
@@ -101,6 +102,11 @@ namespace Airline_Ticket_Booking
             }
 
             loadPanelContact();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

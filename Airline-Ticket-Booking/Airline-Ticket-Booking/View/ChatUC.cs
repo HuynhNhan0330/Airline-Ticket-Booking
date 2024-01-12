@@ -109,14 +109,18 @@ namespace Airline_Ticket_Booking
 
         private async void sendMessagneInCustomer()
         {
+
             MessageDTO message = new MessageDTO();
             message.Text = atxbText.Texts.Trim();
             message.TexterID = Helper.getAccountCustomer().AccountID;
             message.RecipientID = "AC0001";
             message.Created = DateTime.Now;
-            timeGet = message.Created;
+            
+            timeGet = null;
 
             (bool isGet, string label) = await MessageDAL.Ins.createMessage(message);
+
+            timeGet = message.Created;
 
             if (isGet)
             {
@@ -132,14 +136,19 @@ namespace Airline_Ticket_Booking
 
         private async void sendMessagneInAdmin()
         {
+
             MessageDTO message = new MessageDTO();
             message.Text = atxbText.Texts.Trim();
             message.TexterID = "AC0001";
             message.RecipientID = customerID;
             message.Created = DateTime.Now;
-            timeGet = message.Created;
+            
+
+            timeGet = null;
 
             (bool isGet, string label) = await MessageDAL.Ins.createMessage(message);
+            
+            timeGet = message.Created;
 
             if (isGet)
             {
